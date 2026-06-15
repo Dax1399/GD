@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hero demo — visual directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{--cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--cool:#f1f7fb;--warm:#fff8ee;--line:rgba(12,34,54,.11);--line2:rgba(12,34,54,.18);--amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);--sh:0 40px 90px -46px rgba(12,34,54,.55)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+.wrap{max-width:1280px;margin:0 auto;padding:54px 40px 90px}
+.head h1{font-size:30px;font-weight:900;letter-spacing:-1px}
+.head p{font-size:15px;font-weight:300;color:var(--ink-soft);margin-top:10px;max-width:70ch}
+.head .note{font-size:12.5px;font-weight:600;color:var(--amber-deep);margin-top:10px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:42px}
+@media(max-width:1080px){.grid{grid-template-columns:1fr;max-width:520px;margin-inline:auto}}
+.opt .tt{font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--blue)}
+.opt .tt b{color:var(--amber-deep)}
+.opt .ds{font-size:13px;font-weight:300;color:var(--ink-soft);margin:6px 0 16px;min-height:38px}
+
+/* premium card frame */
+.card{position:relative;height:436px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,#ffffff,#f4fafe);border:1px solid var(--line);box-shadow:var(--sh),0 1px 0 rgba(255,255,255,.7) inset}
+.card::before{content:"";position:absolute;inset:0;background:radial-gradient(64% 52% at 80% 8%,rgba(251,170,15,.13),transparent 70%);pointer-events:none;z-index:5}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 60% at 18% 96%,rgba(0,188,225,.12),transparent 70%);pointer-events:none}
+.seg{position:absolute;top:16px;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:3px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:30px;padding:4px}
+.seg b{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-faint);padding:6px 13px;border-radius:30px;transition:.45s var(--e);cursor:default}
+.seg b.on{background:#fff;color:var(--amber-deep);box-shadow:0 8px 18px -10px rgba(12,34,54,.5)}
+.cap{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:16px 22px;font-size:12.5px;font-weight:600;color:var(--ink-soft);text-align:center;background:linear-gradient(0deg,#fff,rgba(255,255,255,.4));border-top:1px solid var(--line);transition:.4s var(--e)}
+.stage{position:absolute;inset:60px 0 54px;z-index:2}
+
+/* icons */
+.sym{display:none}
+.icn{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+
+/* ============ A · ORBITAL CORE ============ */
+.orbit{position:absolute;inset:0}
+.ring{position:absolute;top:50%;left:50%;width:248px;height:248px;margin:-124px;border-radius:50%;border:1px dashed rgba(0,119,182,.28);animation:spin 26s linear infinite}
+.ring2{position:absolute;top:50%;left:50%;width:182px;height:182px;margin:-91px;border-radius:50%;border:1px solid rgba(0,188,225,.16)}
+.sweep{position:absolute;top:50%;left:50%;width:260px;height:260px;margin:-130px;border-radius:50%;background:conic-gradient(from 0deg,rgba(0,188,225,.22),rgba(0,188,225,0) 38%);animation:spin 4.6s linear infinite}
+[data-phase="act"] .sweep{animation-direction:reverse;background:conic-gradient(from 0deg,rgba(251,170,15,.26),rgba(251,170,15,0) 38%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.aicore{position:absolute;top:50%;left:50%;width:92px;height:92px;margin:-46px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:#fff;background:radial-gradient(circle at 38% 32%,#23cdee,var(--blue) 70%,var(--navy));box-shadow:0 16px 34px -12px rgba(0,119,182,.7),0 0 0 6px rgba(0,188,225,.1),0 0 40px rgba(0,188,225,.45);animation:bob 5s var(--e) infinite}
+.aicore b{font-size:15px;font-weight:900;letter-spacing:1px}
+.aicore i{font-style:normal;font-size:8.5px;font-weight:700;letter-spacing:1.5px;opacity:.8;text-transform:uppercase}
+@keyframes bob{0%,100%{transform:translateY(-2px)}50%{transform:translateY(2px)}}
+.oi{position:absolute;top:50%;left:50%;width:84px;height:84px;margin:-42px;display:flex;flex-direction:column;align-items:center;gap:5px}
+.oi .pin{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border:1px solid var(--line);box-shadow:0 14px 26px -16px rgba(12,34,54,.5);display:grid;place-items:center;color:var(--blue);transition:.5s var(--e)}
+.oi span{font-size:10.5px;font-weight:700;color:var(--ink-soft)}
+.oi.a{transform:rotate(-50deg) translateY(-124px) rotate(50deg)}
+.oi.b{transform:rotate(50deg) translateY(-124px) rotate(-50deg)}
+.oi.c{transform:rotate(-130deg) translateY(-124px) rotate(130deg)}
+.oi.d{transform:rotate(130deg) translateY(-124px) rotate(-130deg)}
+.oi .pin{animation:litpin 5.6s var(--e) infinite}
+.oi.b .pin{animation-delay:1.4s}.oi.c .pin{animation-delay:2.8s}.oi.d .pin{animation-delay:4.2s}
+@keyframes litpin{0%,100%{color:var(--ink-faint);border-color:var(--line);box-shadow:0 14px 26px -16px rgba(12,34,54,.5)}12%{color:var(--blue);border-color:var(--cyan);box-shadow:0 14px 26px -14px rgba(0,188,225,.6),0 0 0 4px rgba(0,188,225,.12)}}
+
+/* ============ B · GATEWAY PORTAL ============ */
+.portal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:300px;height:240px;perspective:760px}
+.portal .arch{position:absolute;top:50%;left:50%;border:1.5px solid rgba(0,188,225,.5);border-radius:24px;transform:translate(-50%,-50%);box-shadow:0 0 24px rgba(0,188,225,.16)}
+.portal .arch:nth-child(1){width:300px;height:230px;opacity:.28}
+.portal .arch:nth-child(2){width:236px;height:182px;opacity:.42;border-color:rgba(0,188,225,.6)}
+.portal .arch:nth-child(3){width:176px;height:136px;opacity:.6}
+.portal .arch:nth-child(4){width:120px;height:94px;opacity:.85;border-color:rgba(0,119,182,.7)}
+.portal .arch{animation:breathe 5.5s var(--e) infinite}
+.portal .arch:nth-child(2){animation-delay:.3s}.portal .arch:nth-child(3){animation-delay:.6s}.portal .arch:nth-child(4){animation-delay:.9s}
+@keyframes breathe{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.04)}}
+.portal .glow{position:absolute;top:50%;left:50%;width:88px;height:64px;margin:-32px -44px;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.9),rgba(251,170,15,.25) 45%,transparent 72%);filter:blur(2px);animation:glowp 3.4s var(--e) infinite}
+@keyframes glowp{0%,100%{opacity:.7;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+.portal .gAI{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;font-size:13px;font-weight:900;letter-spacing:1px;color:#7a4a00}
+.streamz{position:absolute;inset:0;overflow:hidden}
+.streamz i{position:absolute;top:50%;left:50%;width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px rgba(0,188,225,.8);animation:suck 2.6s linear infinite}
+.streamz i:nth-child(1){--tx:-150px;--ty:-70px;animation-delay:0s}.streamz i:nth-child(2){--tx:150px;--ty:-66px;animation-delay:.5s}
+.streamz i:nth-child(3){--tx:-160px;--ty:60px;animation-delay:1s}.streamz i:nth-child(4){--tx:158px;--ty:64px;animation-delay:1.5s}
+.streamz i:nth-child(5){--tx:-90px;--ty:-96px;animation-delay:.8s}.streamz i:nth-child(6){--tx:96px;--ty:92px;animation-delay:1.9s}
+@keyframes suck{0%{transform:translate(var(--tx),var(--ty));opacity:0}15%{opacity:1}85%{opacity:1}100%{transform:translate(-50%,-50%) scale(.4);opacity:0}}
+[data-phase="act"] .streamz i{animation-direction:reverse}
+.glegend{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:8px;z-index:3}
+.glegend span{font-size:10px;font-weight:700;color:var(--ink-soft);background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:20px;padding:4px 9px;display:inline-flex;align-items:center;gap:5px}
+.glegend span i{width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+
+/* ============ C · SIGNAL STREAMS ============ */
+.sig{position:absolute;inset:0}
+.sig svg{width:100%;height:100%}
+.sig .ray{stroke-width:2;fill:none;opacity:.5}
+.sig .pulse{stroke-width:3.2;fill:none;stroke-dasharray:7 320;filter:drop-shadow(0 0 5px rgba(0,188,225,.7));animation:travel 2.4s linear infinite}
+.sig .pulse.p2{animation-delay:.6s}.sig .pulse.p3{animation-delay:1.2s}.sig .pulse.p4{animation-delay:1.8s}
+@keyframes travel{from{stroke-dashoffset:327}to{stroke-dashoffset:0}}
+[data-phase="act"] .sig .pulse{animation-direction:reverse}
+.sig .lbl{font:700 11px Montserrat,sans-serif;fill:var(--ink-soft)}
+.sig .hub{filter:drop-shadow(0 8px 18px rgba(0,119,182,.5))}
+.sig .hub-t{font:900 12px Montserrat,sans-serif;fill:#fff}
+</style>
+</head>
+<body>
+<svg class="sym" aria-hidden="true"><defs>
+  <symbol id="ic-app" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/></symbol>
+  <symbol id="ic-prod" viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 18 18z"/></symbol>
+  <symbol id="ic-sec" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+  <div class="head">
+    <h1>Hero demo — three visual directions</h1>
+    <p>Same idea (Learn · Adapt · Act, with AI woven through Applications · Products · Cloud · Security), three different visual languages. Each auto-cycles the three phases. No numbers, no certificates — concept only.</p>
+    <p class="note">Tell me which language to keep — I'll build it out properly across all three phases and wire it into the hero. (I can't screenshot live animation here, so your eyes decide.)</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- A -->
+    <div class="opt">
+      <div class="tt">Option A · <b>Intelligence core</b></div>
+      <div class="ds">An AI core at the centre; Applications, Products, Cloud and Security orbit it, lighting up as intelligence sweeps across them.</div>
+      <div class="card" data-scene data-phase="learn">
+        <div class="seg"><b data-p="learn">Learn</b><b data-p="adapt">Adapt</b><b data-p="act">Act</b></div>
+        <div class="stage"><div class="orbit">
+          <div class="ring"></div><div class="ring2"></div><div class="sweep"></div>
+          <div class="oi a"><div class="pin"><svg class="icn"><use href="#ic-app"/></svg></div><span>Applications</span></div>
+          <div class="oi b"><div class="pin"><svg class="icn"><use href="#ic-prod"/></svg></div><span>Products</span></div>
+          <div class="oi c"><div class="pin"><svg class="icn"><use href="#ic-cloud"/></svg></div><span>Cloud</span></div>
+          <div class="oi d"><div class="pin"><svg class="icn"><use href="#ic-sec"/></svg></div><span>Security</span></div>
+          <div class="aicore"><b>AI</b><i>core</i></div>
+        </div></div>
+        <div class="cap"></div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="opt">
+      <div class="tt">Option B · <b>The Gateway</b></div>
+      <div class="ds">The brand made literal — a luminous gateway with intelligence streaming through it, opening onto applications, products, cloud and security.</div>
+      <div class="card" data-scene data-phase="learn">
+        <div class="seg"><b data-p="learn">Learn</b><b data-p="adapt">Adapt</b><b data-p="act">Act</b></div>
+        <div class="stage">
+          <div class="streamz"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="portal">
+            <span class="arch"></span><span class="arch"></span><span class="arch"></span><span class="arch"></span>
+            <span class="glow"></span><span class="gAI">AI</span>
+          </div>
+          <div class="glegend"><span><i></i>Applications</span><span><i></i>Products</span><span><i></i>Cloud</span><span><i></i>Security</span></div>
+        </div>
+        <div class="cap"></div>
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="opt">
+      <div class="tt">Option C · <b>Signal streams</b></div>
+      <div class="ds">Applications, Products, Cloud and Security as living signal streams, converging into one AI hub with light pulsing through.</div>
+      <div class="card" data-scene data-phase="learn">
+        <div class="seg"><b data-p="learn">Learn</b><b data-p="adapt">Adapt</b><b data-p="act">Act</b></div>
+        <div class="stage"><div class="sig">
+          <svg viewBox="0 0 420 320" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <linearGradient id="gA" x1="0" x2="1"><stop offset="0" stop-color="#00BCE1"/><stop offset="1" stop-color="#0077B6"/></linearGradient>
+              <radialGradient id="hub"><stop offset="0" stop-color="#23cdee"/><stop offset="1" stop-color="#004B87"/></radialGradient>
+            </defs>
+            <path class="ray" stroke="url(#gA)" d="M40,56 C150,56 200,150 320,150"/>
+            <path class="ray" stroke="url(#gA)" d="M40,120 C150,120 210,150 320,150"/>
+            <path class="ray" stroke="url(#gA)" d="M40,190 C150,190 210,150 320,150"/>
+            <path class="ray" stroke="url(#gA)" d="M40,256 C150,256 200,150 320,150"/>
+            <path class="pulse" stroke="#00BCE1" d="M40,56 C150,56 200,150 320,150"/>
+            <path class="pulse p2" stroke="#00BCE1" d="M40,120 C150,120 210,150 320,150"/>
+            <path class="pulse p3" stroke="#00BCE1" d="M40,190 C150,190 210,150 320,150"/>
+            <path class="pulse p4" stroke="#00BCE1" d="M40,256 C150,256 200,150 320,150"/>
+            <text class="lbl" x="36" y="50" text-anchor="start">Applications</text>
+            <text class="lbl" x="36" y="114" text-anchor="start">Products</text>
+            <text class="lbl" x="36" y="184" text-anchor="start">Cloud</text>
+            <text class="lbl" x="36" y="250" text-anchor="start">Security</text>
+            <circle class="hub" cx="320" cy="150" r="30" fill="url(#hub)"/>
+            <text class="hub-t" x="320" y="154" text-anchor="middle">AI</text>
+          </svg>
+        </div></div>
+        <div class="cap"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const PH=['learn','adapt','act'];
+const CAP={
+  learn:'Understands across applications, products, cloud & security.',
+  adapt:'Engineers & modernises — with AI woven through.',
+  act:'Operates & responds — continuously and securely.'
+};
+let p=0;
+function tick(){
+  const s=PH[p];
+  document.querySelectorAll('[data-scene]').forEach(el=>el.dataset.phase=s);
+  document.querySelectorAll('.seg').forEach(seg=>{[...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.p===s));});
+  document.querySelectorAll('.cap').forEach(c=>c.textContent=CAP[s]);
+  p=(p+1)%3;
+}
+tick();setInterval(tick,2800);
+</script>
+</body>
+</html>

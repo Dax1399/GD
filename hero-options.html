@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GD Hero — 6 directions to choose from</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<style>
+:root{
+  --cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--grey:#bbbbbb;--mist:#ebebeb;
+  --ink:#0c2236;--ink-soft:#566676;--bg:#fbfcfd;--line:rgba(12,34,54,.1);
+  --amber-grad:linear-gradient(120deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:14px;padding:12px clamp(16px,4vw,46px);
+  background:rgba(251,252,253,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar .t{font-weight:900;font-size:13.5px;letter-spacing:.3px;white-space:nowrap}
+.topbar .t span{color:var(--amber-deep)}
+.topbar .nav{display:flex;gap:6px;margin-left:6px}
+.topbar a{font-size:12.5px;font-weight:700;color:var(--navy);text-decoration:none;width:28px;height:28px;display:grid;place-items:center;border:1px solid var(--line);border-radius:8px;transition:.2s}
+.topbar a:hover{background:#fff;border-color:var(--amber);color:var(--amber-deep)}
+.topbar .note{margin-left:auto;font-size:11.5px;font-weight:500;color:var(--ink-soft);text-align:right;line-height:1.3}
+.panel{min-height:100vh;display:flex;align-items:center;padding:118px clamp(18px,4vw,64px) 64px;position:relative;border-bottom:1px solid var(--line)}
+.panel:nth-child(even){background:linear-gradient(180deg,#fff,var(--bg))}
+.grid{display:grid;grid-template-columns:0.92fr 1.08fr;gap:42px;align-items:center;width:100%;max-width:1320px;margin:0 auto}
+.tagrow{display:flex;align-items:center;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+.opt{font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;background:var(--ink);padding:6px 12px;border-radius:8px}
+.medium{font-size:11.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-deep);background:#fff6e6;padding:6px 11px;border-radius:8px;border:1px solid rgba(251,170,15,.3)}
+h1{font-size:clamp(2.3rem,4.6vw,3.8rem);font-weight:900;line-height:1.02;letter-spacing:-1.6px}
+h1 b{font-weight:900;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.mean{font-size:clamp(.98rem,1.3vw,1.12rem);font-weight:500;color:var(--ink);margin:20px 0 10px;max-width:44ch;line-height:1.5}
+.sub{font-size:13.5px;font-weight:300;color:var(--ink-soft);max-width:46ch;line-height:1.5}
+.ctas{display:flex;gap:12px;align-items:center;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:13.5px;border-radius:11px;padding:12px 22px;border:0;cursor:pointer;text-decoration:none}
+.btn.amber{background:var(--amber-grad);color:#3a2400}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line)}
+.lnk{font-size:13px;font-weight:700;color:var(--amber-deep);text-decoration:none}
+
+/* bold visual panel */
+.visual{position:relative;aspect-ratio:16/11;width:100%;border-radius:24px;overflow:hidden;border:1px solid var(--line);
+  box-shadow:0 40px 80px -50px rgba(12,34,54,.5)}
+.visual .img{position:absolute;inset:0;background-size:cover;background-position:center}
+.visual .tint{position:absolute;inset:0}
+.visual.dark{background:#06243d}
+.visual.lite{background:linear-gradient(135deg,#eef3f8,#fff)}
+.visual .label{position:absolute;left:14px;bottom:13px;z-index:3;font-size:10.5px;font-weight:700;letter-spacing:.6px;
+  background:rgba(255,255,255,.82);color:var(--ink-soft);padding:5px 11px;border-radius:8px;backdrop-filter:blur(6px)}
+.visual canvas{position:absolute;inset:0;width:100%;height:100%}
+.wm{position:absolute;right:12px;top:12px;z-index:3;font-size:9.5px;font-weight:600;color:rgba(255,255,255,.7);background:rgba(0,0,0,.28);padding:3px 8px;border-radius:6px}
+.glowcorner{position:absolute;width:60%;height:80%;right:-10%;top:-20%;z-index:2;pointer-events:none;
+  background:radial-gradient(circle,rgba(251,170,15,.32),transparent 60%);mix-blend-mode:screen}
+@media(max-width:880px){.grid{grid-template-columns:1fr;gap:22px}.topbar .note{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="t">THE GATEWAY <span>DIGITAL</span> — hero directions</div>
+  <div class="nav"><a href="#o1">1</a><a href="#o2">2</a><a href="#o3">3</a><a href="#o4">4</a><a href="#o5">5</a><a href="#o6">6</a></div>
+  <div class="note">Light base · bold hero panel · tell me the number<br>Images are <b>watermarked stock comps</b> — direction only; winner gets clean art</div>
+</div>
+
+<!-- 1 · CINEMATIC · INTELLIGENCE -->
+<section class="panel" id="o1">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 01</span><span class="medium">Cinematic 3D · Intelligence</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">A rendered “mind” held and alive — intelligence radiating across a connected enterprise.</p>
+      <p class="sub">Closest to your brain-in-hand reference. Human + intelligent, with amber sparks in the network.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual dark"><div class="img" style="background-image:url('_img/int_brain.jpg')"></div><div class="glowcorner"></div><span class="label">Cinematic render · intelligence motif</span><span class="wm">stock comp</span></div>
+  </div>
+</section>
+
+<!-- 2 · CINEMATIC · AGENTS -->
+<section class="panel" id="o2">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 02</span><span class="medium">Cinematic 3D · Autonomous agents</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">A rendered agent with presence — systems that don’t just respond, they act.</p>
+      <p class="sub">Like your aiaf reference. Note: this comp reads a little “mascot” — final could be a sleeker, enterprise agent.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual lite"><div class="img" style="background-image:url('_img/agent_float.jpg')"></div><span class="label">Cinematic render · autonomous agent</span><span class="wm">stock comp</span></div>
+  </div>
+</section>
+
+<!-- 3 · CINEMATIC · SCULPTURAL FORM -->
+<section class="panel" id="o3">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 03</span><span class="medium">Cinematic 3D · Sculptural form</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">An abstract rendered form — ownable, brand-first, no clichés. Pure craft and color.</p>
+      <p class="sub">Most “timeless / design-forward”. We’d tune the gradient to your exact cyan → amber.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual lite"><div class="img" style="background-image:url('_img/form_fluid.jpg')"></div><span class="label">Cinematic render · sculptural form</span><span class="wm">stock comp</span></div>
+  </div>
+</section>
+
+<!-- 4 · CINEMATIC · DATA & LIGHT -->
+<section class="panel" id="o4">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 04</span><span class="medium">Cinematic 3D · Data &amp; light</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">Rendered energy in motion — data and intelligence flowing through the system.</p>
+      <p class="sub">Like your “next generation” reference. Atmospheric; we’d warm it with amber so it isn’t all blue.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual dark"><div class="img" style="background-image:url('_img/data_wave.jpg')"></div><div class="glowcorner"></div><span class="label">Cinematic render · data &amp; light</span><span class="wm">stock comp</span></div>
+  </div>
+</section>
+
+<!-- 5 · INTERACTIVE 3D OBJECT (real WebGL) -->
+<section class="panel" id="o5">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 05</span><span class="medium">Interactive 3D object · live</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">A crafted 3D object that reacts to you — premium, real-time, reflecting your brand colors.</p>
+      <p class="sub">This one is actually live (move your mouse). Real-time but designed — not abstract particle soup. Object/material can become the GD mark.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual lite"><canvas id="obj"></canvas><span class="label">Live WebGL · polished object (drag-free parallax)</span></div>
+  </div>
+</section>
+
+<!-- 6 · PHOTO-LED -->
+<section class="panel" id="o6">
+  <div class="grid">
+    <div class="copy">
+      <div class="tagrow"><span class="opt">Option 06</span><span class="medium">Real imagery · photo-led</span></div>
+      <h1>Engineered to run.<br><b>Built to think.</b></h1>
+      <p class="mean">Real people, real delivery — credibility first, with a confident brand treatment over it.</p>
+      <p class="sub">Most human and trustworthy; least “tech-abstract”. Works well if you want to foreground teams and outcomes.</p>
+      <div class="ctas"><a class="btn amber" href="#">Start a conversation →</a><a class="lnk" href="#">See what we build →</a></div>
+    </div>
+    <div class="visual dark"><div class="img" style="background-image:url('_img/photo_team.jpg')"></div><div class="tint" style="background:linear-gradient(115deg,rgba(0,75,135,.55),transparent 55%),linear-gradient(0deg,rgba(12,34,54,.35),transparent 50%)"></div><span class="label">Photography · brand treatment</span><span class="wm">stock comp</span></div>
+  </div>
+</section>
+
+<script>
+const mouse={x:0,y:0,tx:0,ty:0};
+addEventListener('mousemove',e=>{mouse.tx=e.clientX/innerWidth-.5;mouse.ty=e.clientY/innerHeight-.5;});
+const _scenes=[];function register(cv,frame){_scenes.push({cv,frame});}
+
+/* Option 5 — polished interactive 3D object */
+(function(){
+  const cv=document.getElementById('obj'); if(!window.THREE){return;}
+  if(location.search.indexOf('noobj')>-1){return;}
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(45,1,0.1,100);camera.position.set(0,0,6);
+  const renderer=new THREE.WebGLRenderer({canvas:cv,alpha:true,antialias:true});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+  renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;
+  // studio environment from a gradient canvas → real reflections (amber↔cyan)
+  const ec=document.createElement('canvas');ec.width=512;ec.height=256;const ex=ec.getContext('2d');
+  const grd=ex.createLinearGradient(0,0,0,256);
+  grd.addColorStop(0,'#fff3da');grd.addColorStop(.3,'#fbaa0f');grd.addColorStop(.5,'#ffffff');grd.addColorStop(.72,'#00BCE1');grd.addColorStop(1,'#063a63');
+  ex.fillStyle=grd;ex.fillRect(0,0,512,256);
+  ex.globalAlpha=.95;ex.fillStyle='#ffffff';ex.beginPath();ex.arc(150,64,42,0,7);ex.fill();ex.beginPath();ex.arc(380,120,26,0,7);ex.fill();ex.globalAlpha=1;
+  const tex=new THREE.CanvasTexture(ec);tex.mapping=THREE.EquirectangularReflectionMapping;
+  const pmrem=new THREE.PMREMGenerator(renderer);const env=pmrem.fromEquirectangular(tex).texture;
+  scene.environment=env;
+  scene.add(new THREE.AmbientLight(0xffffff,.35));
+  const dl=new THREE.DirectionalLight(0xffffff,.8);dl.position.set(4,6,5);scene.add(dl);
+  const knot=new THREE.Mesh(new THREE.TorusKnotGeometry(1.25,.42,260,44),
+    new THREE.MeshStandardMaterial({color:0xeaf1f6,metalness:1,roughness:.07,envMap:env,envMapIntensity:1.25}));
+  scene.add(knot);
+  function resize(){const r=cv.getBoundingClientRect();if(!r.width)return;renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix();}
+  resize();addEventListener('resize',resize);
+  register(cv,function(){
+    mouse.x+=(mouse.tx-mouse.x)*.05;mouse.y+=(mouse.ty-mouse.y)*.05;
+    knot.rotation.x+=0.004;knot.rotation.y+=0.006;
+    knot.position.x=mouse.x*0.5;knot.position.y=-mouse.y*0.35;
+    camera.position.x=mouse.x*1.0;camera.position.y=-mouse.y*0.7;camera.lookAt(0,0,0);
+    renderer.render(scene,camera);
+  });
+})();
+
+(function tick(){
+  for(const s of _scenes){const r=s.cv.getBoundingClientRect();if(r.width&&r.bottom>-60&&r.top<innerHeight+60)s.frame();}
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>

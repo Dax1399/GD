@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gateway Digital — Option 1 (Editorial)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--grey:#bbbbbb;--mist:#ebebeb;
+  --ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--cool:#f1f7fb;--warm:#fff8ee;
+  --line:rgba(12,34,54,.11);--line2:rgba(12,34,54,.18);
+  --amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);
+  --sh:0 26px 60px -40px rgba(12,34,54,.4);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;font-size:16px;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+
+/* type */
+h1{font-size:clamp(30px,4.2vw,52px);font-weight:900;line-height:1.06;letter-spacing:-1.4px}
+h2{font-size:clamp(28px,3vw,40px);font-weight:900;line-height:1.08;letter-spacing:-1px}
+.amber{background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:17px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.lead{font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;border-radius:10px;padding:13px 24px;border:0;cursor:pointer;transition:.3s var(--e)}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+.btn.amber-btn{background:var(--amber-grad);color:#3a2400;box-shadow:0 16px 30px -16px rgba(251,170,15,.6)}
+.btn.amber-btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--cyan);background:var(--cool)}
+.lnk{font-size:14px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:7px;align-items:center}
+.lnk .arr{transition:.3s}.lnk:hover .arr{transform:translateX(4px)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,252,253,.78);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:26px;padding:13px 0}
+.logo img{height:36px}
+nav{display:flex;gap:6px;margin-left:auto}
+nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 6px;position:relative}
+nav a::after{content:"";position:absolute;left:6px;right:6px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
+nav a:hover{color:var(--navy)} nav a:hover::after{transform:scaleX(1)}
+
+/* section intro (the repeated connective system) */
+section{padding:86px 0;border-top:1px solid var(--line)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--amber-deep);margin-bottom:16px}
+.eyebrow b{color:var(--ink-faint);font-weight:800}
+.intro{max-width:60ch;margin-bottom:40px}
+.intro h2{margin-bottom:14px;max-width:20ch}
+
+/* unified CARD (reused everywhere) */
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;position:relative;overflow:hidden;transition:.4s var(--e)}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.45s var(--e)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:transparent}
+.card:hover::before{transform:scaleX(1)}
+.card .ic{width:46px;height:46px;border-radius:12px;background:var(--cool);color:var(--blue);display:grid;place-items:center;margin-bottom:16px}
+.card h3{font-size:18px;font-weight:800;margin-bottom:7px}
+.card .meta{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.card p{font-size:13.5px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.card ul{list-style:none;margin-top:12px;display:flex;flex-direction:column;gap:6px}
+.card li{font-size:13px;color:var(--ink-soft);display:flex;gap:9px;align-items:center}
+.card li::before{content:"";width:6px;height:6px;border-radius:2px;background:var(--cyan);flex:none}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+
+/* hero */
+.hero{border-top:0;min-height:92vh;display:flex;align-items:center;padding:120px 0 60px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-20%;right:-8%;width:54vw;height:54vw;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.13),transparent 62%);z-index:-1}
+.hero .g{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.hero .sub{margin:20px 0 30px;max-width:46ch}
+.ctas{display:flex;gap:13px;align-items:center;flex-wrap:wrap}
+/* hero side console (kept, refined) */
+.console{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);overflow:hidden}
+.console .top{display:flex;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid var(--line);font-size:13px;font-weight:800}
+.console .top .dot{width:9px;height:9px;border-radius:50%;background:#19c37d}
+.console .top span{font-weight:500;color:var(--ink-faint);font-size:11.5px}
+.console .top .b{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:#eef4f8;padding:5px 10px;border-radius:7px}
+.crow{display:flex;align-items:center;gap:13px;padding:13px 18px;border-bottom:1px solid var(--line)}
+.crow:last-child{border-bottom:0}
+.crow .ic{width:36px;height:36px;border-radius:10px;background:var(--cool);color:var(--blue);display:grid;place-items:center;flex:none}
+.crow b{font-size:14px;font-weight:800;display:block}.crow span{font-size:12px;color:var(--ink-soft);font-weight:300}
+.crow .v{margin-left:auto;font-weight:800;color:var(--amber-deep);font-size:14px}
+
+/* trust strip */
+.trust{background:var(--cool);border-top:1px solid var(--line)}
+.trust .row{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:center}
+.metrics{display:flex;gap:40px;flex-wrap:wrap}
+.metric b{display:block;font-size:34px;font-weight:900;color:var(--navy);line-height:1}
+.metric b em{font-style:normal;color:var(--amber-deep)}
+.metric span{font-size:12px;font-weight:500;color:var(--ink-soft)}
+.partners{display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.partners small{font-size:11px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint)}
+.partners .b{display:flex;gap:8px;flex-wrap:wrap}
+.partners .b span{font-size:12px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:8px}
+
+/* industries */
+.ind{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ind a{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:700;font-size:16px;transition:.3s var(--e)}
+.ind a:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:var(--sh)}
+.ind a .arr{color:var(--amber-deep);transition:.3s}.ind a:hover .arr{transform:translateX(4px)}
+
+/* why us */
+.why{background:linear-gradient(180deg,var(--cool),#fff)}
+
+/* case studies (just above insights) */
+.cases{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.case{position:relative;border-radius:16px;overflow:hidden;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;color:#fff;transition:.4s var(--e)}
+.case::before{content:"";position:absolute;inset:0;background:var(--cbg);z-index:0}
+.case::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,24,40,.05),rgba(8,24,40,.78));z-index:1}
+.case>*{position:relative;z-index:2}
+.case:hover{transform:translateY(-6px);box-shadow:var(--sh)}
+.case .s{font-size:11px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--cyan)}
+.case h3{font-size:16px;font-weight:800;margin:8px 0 12px;color:#fff}
+.case .kpi{font-size:30px;font-weight:900;color:#fff;line-height:1}
+.case .kpi small{font-size:12px;font-weight:500;color:rgba(255,255,255,.8);display:block;margin-top:3px}
+.c1{--cbg:linear-gradient(150deg,#004B87,#0077B6)}.c2{--cbg:linear-gradient(150deg,#9a6300,#fbaa0f)}
+.c3{--cbg:linear-gradient(150deg,#0a5a8c,#00BCE1)}.c4{--cbg:linear-gradient(150deg,#0c2236,#274b66)}
+
+/* insights */
+.ins{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.acard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.4s var(--e);display:flex;flex-direction:column}
+.acard:hover{transform:translateY(-6px);box-shadow:var(--sh)}
+.acard .t{height:120px}
+.acard .bd{padding:18px;display:flex;flex-direction:column;gap:9px;flex:1}
+.acard .tag{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--amber-deep)}
+.acard h3{font-size:15px;font-weight:700;line-height:1.3}
+.acard .r{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--blue)}
+
+/* final cta */
+.final{border-top:0;padding:0;margin:86px 0}
+.cta{background:linear-gradient(135deg,var(--ink),var(--navy) 70%);border-radius:28px;padding:72px 50px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;right:-8%;top:-30%;width:50%;height:160%;background:radial-gradient(circle,rgba(251,170,15,.4),transparent 60%)}
+.cta h2{position:relative;color:#fff}
+.cta p{position:relative;font-size:17px;font-weight:300;color:rgba(255,255,255,.85);max-width:52ch;margin:16px auto 28px}
+.cta .ctas{position:relative;justify-content:center}
+.cta .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+
+/* footer */
+footer{background:var(--ink);color:#cfe0ee;padding:60px 0 28px;border:0}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.fg .logo img{height:34px;filter:brightness(0) invert(1);opacity:.92}
+.fg p{font-size:13px;font-weight:300;color:#8fb0ca;margin:16px 0 0;max-width:34ch}
+footer h5{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+footer ul a{font-size:13px;font-weight:300;color:#9fbdd6}footer ul a:hover{color:var(--amber)}
+.fb{margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#7fa0bb;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+.opt-flag{position:fixed;bottom:16px;left:16px;z-index:80;background:var(--ink);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 14px;border-radius:20px;box-shadow:var(--sh)}
+@media(max-width:980px){.hero .g{grid-template-columns:1fr;gap:30px}.grid-4,.cases,.ins{grid-template-columns:repeat(2,1fr)}.grid-3,.ind{grid-template-columns:1fr}nav{display:none}.trust .row{flex-direction:column;align-items:flex-start}.partners{align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="opt-flag">Option 1 · Editorial</div>
+
+<header><div class="bar wrap">
+  <a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a>
+  <nav><a href="#what">Services</a><a href="#platforms">Platforms</a><a href="#industries">Industries</a><a href="#cases">Work</a><a href="#insights">Insights</a><a href="#">Company</a></nav>
+  <a class="btn amber-btn" href="#cta">Contact <span class="arr">→</span></a>
+</div></header>
+
+<!-- HERO -->
+<section class="hero"><div class="wrap g">
+  <div>
+    <h1>Engineered to run.<br><span class="amber">Built to think.</span></h1>
+    <p class="sub">We design, build, and operate intelligent systems that learn, adapt, and act — across applications, cloud, cybersecurity, and enterprise ecosystems.</p>
+    <div class="ctas"><a class="btn amber-btn" href="#cta">Start a conversation <span class="arr">→</span></a><a class="lnk" href="#what">See what we build <span class="arr">→</span></a></div>
+  </div>
+  <div class="console">
+    <div class="top"><span class="dot"></span>The Gateway<span>· design · build · operate</span><span class="b">End&#8209;to&#8209;end</span></div>
+    <div class="crow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M8 6l-5 6 5 6M16 6l5 6-5 6"/></svg></span><div><b>ADAM</b><span>App development &amp; maintenance</span></div><span class="v">Run</span></div>
+    <div class="crow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/></svg></span><div><b>Cloud Transformation</b><span>Migrate · manage · modernize</span></div><span class="v">Optimize</span></div>
+    <div class="crow"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/></svg></span><div><b>Cybersecurity</b><span>Defend · detect · respond</span></div><span class="v">Protect</span></div>
+    <div class="crow"><span class="ic" style="background:var(--warm);color:var(--amber-deep)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg></span><div><b>AI/ML Engineering</b><span>From use-case to production</span></div><span class="v">Think</span></div>
+  </div>
+</div></section>
+
+<!-- TRUST -->
+<section class="trust"><div class="wrap row">
+  <div class="metrics">
+    <div class="metric"><b>27<em>+</em></b><span>Years delivering</span></div>
+    <div class="metric"><b>8,000<em>+</em></b><span>Projects shipped</span></div>
+    <div class="metric"><b>900<em>+</em></b><span>Clients worldwide</span></div>
+    <div class="metric"><b>1,000<em>+</em></b><span>Engineers</span></div>
+  </div>
+  <div class="partners"><small>Engineered on the platforms you trust</small><div class="b"><span>AWS</span><span>Microsoft Azure</span><span>Google Cloud</span><span>Databricks</span><span>ISO 27001</span></div></div>
+</div></section>
+
+<!-- INTELLIGENCE LAYER -->
+<section id="layer"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>01</b> · The core, reimagined</div><h2>The intelligence layer behind <span class="amber">everything we build.</span></h2><p class="lead">The principles that have defined us for two decades, now the backbone of how we engineer for an intelligent enterprise.</p></div>
+  <div class="grid-4">
+    <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 7v10l9 5 9-5V7z"/></svg></div><h3>Alvarium™</h3><p>Design-led methodology that turns ambiguity into a production-ready blueprint — signed off before we build.</p></div>
+    <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div><h3>AI-native engineering</h3><p>Models, data and automation woven into how we architect, code, test and operate — not bolted on.</p></div>
+    <div class="card"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18"/></svg></div><h3>Global delivery</h3><p>Onshore + nearshore + offshore pods that flex to your pace, governance and budget — output over hours.</p></div>
+    <div class="card"><div class="ic" style="background:var(--warm);color:var(--amber-deep)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3c4 4 4 14 0 18M18 3c-4 4-4 14 0 18M6 8h12M6 16h12"/></svg></div><h3>Engineering DNA</h3><p>An indomitable urge to excel — shipped, in production, at scale, for two decades.</p></div>
+  </div>
+</div></section>
+
+<!-- WHAT WE DO -->
+<section id="what"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>02</b> · Capabilities</div><h2>What we design, build &amp; <span class="amber">operate.</span></h2><p class="lead">Four core engines, each made smarter by AI — backed by the full breadth of engineering, quality and advisory.</p></div>
+  <div class="grid-4" style="margin-bottom:16px">
+    <div class="card"><div class="meta">Core 01</div><h3>ADAM</h3><p>Application development &amp; maintenance.</p><ul><li>Software Engineering</li><li>Application Modernization</li><li>Managed Services</li><li>Enterprise Mobility</li></ul></div>
+    <div class="card"><div class="meta">Core 02</div><h3>Product Engineering</h3><p>Products from idea to lifecycle.</p><ul><li>Conceptualization</li><li>Migration</li><li>Lifecycle Management</li></ul></div>
+    <div class="card"><div class="meta">Core 03</div><h3>Cloud Transformation</h3><p>Migrate, run and optimize.</p><ul><li>Migration &amp; Modernization</li><li>Infrastructure &amp; Management</li><li>Cloud Managed Services</li></ul></div>
+    <div class="card"><div class="meta">Core 04</div><h3>Cybersecurity</h3><p>Defend, detect and respond.</p><ul><li>Threat &amp; Risk</li><li>Identity &amp; Access</li><li>Security Operations</li></ul></div>
+  </div>
+  <div class="grid-4">
+    <div class="card"><h3>Quality Engineering</h3><p>Continuous, automated assurance built into delivery.</p></div>
+    <div class="card"><h3>AI/ML Engineering</h3><p>From use-case to governed, production models.</p></div>
+    <div class="card"><h3>Digital Experience</h3><p>Interfaces and journeys people want to use.</p></div>
+    <div class="card"><h3>Consulting &amp; Advisory</h3><p>Strategy turned into an executable roadmap.</p></div>
+  </div>
+</div></section>
+
+<!-- PLATFORMS -->
+<section id="platforms"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>03</b> · Gateway Platforms</div><h2>Built to <span class="amber">run.</span></h2><p class="lead">Not slideware — platforms we've built and operate ourselves, live in production across data, voice, cost and industry operations.</p></div>
+  <div class="grid-4">
+    <div class="card"><h3>iDashboard</h3><p>Your data analyst that never sleeps — answers, alerts and insight on demand.</p></div>
+    <div class="card"><h3>Vaani</h3><p>Voice agents that work the phones 24/7 — 12 languages, sub-second response.</p></div>
+    <div class="card"><h3>CostlyzrEdge</h3><p>FinOps automation that finds and removes cloud waste across platforms.</p></div>
+    <div class="card"><h3>AutoDAP</h3><p>Your way into the digital automotive parts landscape.</p></div>
+    <div class="card"><h3>LEAP</h3><p>A location-sensitive platform that connects you to customers in context.</p></div>
+    <div class="card"><h3>Dismanto</h3><p>Managed ELV processing for the auto-recycling ecosystem.</p></div>
+    <div class="card"><h3>FinFacets</h3><p>Beyond ERP reporting — strategic financial intelligence on tap.</p></div>
+    <div class="card" style="background:var(--ink);border:0"><h3 style="color:#fff">Explore all platforms</h3><p style="color:rgba(255,255,255,.72)">See the full Gateway product portfolio.</p></div>
+  </div>
+</div></section>
+
+<!-- INDUSTRIES -->
+<section id="industries"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>04</b> · Built for your sector</div><h2>Depth where it <span class="amber">counts.</span></h2><p class="lead">Industry-shaped delivery, anchored to the metrics that move each business.</p></div>
+  <div class="ind">
+    <a href="#">Financial Services <span class="arr">→</span></a>
+    <a href="#">Healthcare &amp; Life Sciences <span class="arr">→</span></a>
+    <a href="#">Retail &amp; CPG <span class="arr">→</span></a>
+    <a href="#">Industrial &amp; Automotive <span class="arr">→</span></a>
+    <a href="#">Software &amp; ISVs <span class="arr">→</span></a>
+    <a href="#">Energy &amp; Utilities <span class="arr">→</span></a>
+  </div>
+</div></section>
+
+<!-- WHY US -->
+<section class="why" id="why"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>05</b> · Why The Gateway</div><h2>Built to ship, <span class="amber">trusted to scale.</span></h2></div>
+  <div class="grid-3">
+    <div class="card"><h3>Full-stack, end-to-end</h3><p>AI, cloud, cybersecurity and product engineering under one roof — we design, build and keep it running.</p></div>
+    <div class="card"><h3>We ship products</h3><p>Seven platforms in production prove we don't just advise — we build and operate.</p></div>
+    <div class="card"><h3>Secure &amp; governed by default</h3><p>EU-grade security, ISO 27001, and governance designed in from day one.</p></div>
+  </div>
+</div></section>
+
+<!-- CASE STUDIES (just above insights, per request) -->
+<section id="cases"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>06</b> · Proof over promises</div><h2>Outcomes, measured where <span class="amber">it counts.</span></h2><p class="lead">Representative engagements — each anchored to the metric that moved the business.</p></div>
+  <div class="cases">
+    <a class="case c1" href="#"><div class="s">Financial Services</div><h3>Straight-through claims processing</h3><div class="kpi">+38%<small>STP rate</small></div></a>
+    <a class="case c2" href="#"><div class="s">Retail &amp; CPG</div><h3>Demand forecasting that plans itself</h3><div class="kpi">+24%<small>Forecast accuracy</small></div></a>
+    <a class="case c3" href="#"><div class="s">Industrial &amp; Auto</div><h3>Voice agents on the service desk</h3><div class="kpi">4.6/5<small>CSAT</small></div></a>
+    <a class="case c4" href="#"><div class="s">Cloud &amp; FinOps</div><h3>Cloud spend optimized continuously</h3><div class="kpi">−31%<small>Run-rate cost</small></div></a>
+  </div>
+</div></section>
+
+<!-- INSIGHTS -->
+<section id="insights"><div class="wrap">
+  <div class="intro"><div class="eyebrow"><b>07</b> · Insights</div><h2>Thinking from the <span class="amber">engine room.</span></h2></div>
+  <div class="ins">
+    <a class="acard" href="#"><div class="t" style="background:linear-gradient(135deg,#0c2236,#274b66)"></div><div class="bd"><span class="tag">AI Engineering</span><h3>From pilot to production: what makes enterprise AI stick</h3><span class="r">Read →</span></div></a>
+    <a class="acard" href="#"><div class="t" style="background:linear-gradient(135deg,#9a6300,#fbaa0f)"></div><div class="bd"><span class="tag">Cloud</span><h3>The modernization trap — migrate without a rewrite</h3><span class="r">Read →</span></div></a>
+    <a class="acard" href="#"><div class="t" style="background:linear-gradient(135deg,#5a6b7b,#93a3b2)"></div><div class="bd"><span class="tag">Cybersecurity</span><h3>Securing the agentic enterprise</h3><span class="r">Read →</span></div></a>
+    <a class="acard" href="#"><div class="t" style="background:linear-gradient(135deg,#0a5a8c,#00BCE1)"></div><div class="bd"><span class="tag">Delivery</span><h3>Why output-based delivery beats time-and-materials</h3><span class="r">Read →</span></div></a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<div class="final"><div class="wrap"><div class="cta">
+  <h2>Let's build something that runs — and thinks.</h2>
+  <p>Tell us what you're trying to move. We'll bring the methodology, the platforms and the engineers to make it real.</p>
+  <div class="ctas"><a class="btn amber-btn" href="#">Book a 30-min call <span class="arr">→</span></a><a class="btn ghost" href="#what">Explore services</a></div>
+</div></div></div>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a><p>Intelligent systems that learn, adapt and act — designed, built and operated end-to-end.</p></div>
+    <div><h5>Services</h5><ul><li><a href="#">ADAM</a></li><li><a href="#">Product Engineering</a></li><li><a href="#">Cloud</a></li><li><a href="#">Cybersecurity</a></li></ul></div>
+    <div><h5>Platforms</h5><ul><li><a href="#">iDashboard</a></li><li><a href="#">Vaani</a></li><li><a href="#">CostlyzrEdge</a></li><li><a href="#">FinFacets</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Industries</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 The Gateway Digital</span><span>Privacy · Terms</span></div>
+</div></footer>
+</body>
+</html>

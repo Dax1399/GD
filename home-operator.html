@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gateway Digital — Engineered to run. Built to think. [Operator voice]</title>
+<meta name="description" content="We design, build, and operate intelligent systems that learn, adapt, and act — across applications, cloud, cybersecurity, and enterprise ecosystems." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{--cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--cool:#f1f7fb;--warm:#fff8ee;--green:#15a05a;--line:rgba(12,34,54,.11);--line2:rgba(12,34,54,.18);--amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);--sh:0 26px 60px -38px rgba(12,34,54,.45)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;font-size:16px;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+h1{font-size:clamp(30px,4.2vw,52px);font-weight:900;line-height:1.06;letter-spacing:-1.4px}
+h2{font-size:clamp(28px,3vw,40px);font-weight:900;line-height:1.08;letter-spacing:-1px}
+.amber{background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:17px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.lead{font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border-radius:11px;padding:13px 24px;border:0;cursor:pointer;transition:.3s var(--e)}
+.btn.amber-btn{background:var(--amber-grad);color:#3a2400;box-shadow:0 16px 30px -16px rgba(251,170,15,.6)}.btn.amber-btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}.btn.ghost:hover{border-color:var(--cyan);background:var(--cool)}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+.lnk{font-size:14px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:7px;align-items:center}.lnk .arr{transition:.3s}.lnk:hover .arr{transform:translateX(5px)}
+
+.vtag{position:fixed;left:14px;bottom:14px;z-index:99;background:var(--ink);color:#fff;font-size:11px;font-weight:800;letter-spacing:.4px;padding:7px 12px;border-radius:20px;box-shadow:var(--sh);opacity:.9}
+
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,252,253,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:26px;padding:13px 0}.logo img{height:38px}
+nav{display:flex;gap:8px;margin-left:auto}nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 6px;position:relative}
+nav a::after{content:"";position:absolute;left:6px;right:6px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
+nav a:hover{color:var(--navy)}nav a:hover::after{transform:scaleX(1)}
+
+/* hero */
+.hero{min-height:90vh;display:flex;align-items:center;text-align:center;position:relative;overflow:hidden;padding:128px 0 50px}
+.hero::after{content:"";position:absolute;top:-18%;left:50%;transform:translateX(-50%);width:72vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.12),transparent 60%);z-index:-1}
+.hero .wrap{max-width:790px}
+.hero h1{margin:0 auto}.hero .sub{margin:22px auto 30px;max-width:54ch}
+.hero .ctas{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.hero .gridbg{position:absolute;inset:0;z-index:-1;opacity:.55;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask:radial-gradient(circle at 50% 42%,#000,transparent 70%);mask:radial-gradient(circle at 50% 42%,#000,transparent 70%);animation:drift 34s linear infinite}
+@keyframes drift{to{background-position:56px 56px}}
+.hero h1,.hero .sub,.hero .ctas{animation:rise .85s var(--e) both}
+.hero .sub{animation-delay:.1s}.hero .ctas{animation-delay:.2s}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.rot{display:inline-block;height:1.25em;line-height:1.25;overflow:hidden;vertical-align:bottom;text-align:left}
+.rot ul{margin:0;padding:0;list-style:none;animation:rot 11s var(--e) infinite}
+.rot li{height:1.25em;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
+@keyframes rot{0%,16%{transform:translateY(0)}24%,40%{transform:translateY(-1.25em)}48%,64%{transform:translateY(-2.5em)}72%,88%{transform:translateY(-3.75em)}100%{transform:translateY(-5em)}}
+@media(prefers-reduced-motion:reduce){.rot ul,.gridbg{animation:none}.hero h1,.hero .sub,.hero .ctas{animation:none}}
+
+/* SCROLLYTELLING */
+.scrolly{background:linear-gradient(180deg,#fff,var(--cool) 60%,#fff);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.scrolly .inner{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:start}
+.viz{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
+.vcard{position:relative;width:100%;max-width:452px;height:496px;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.stepper{position:absolute;top:0;left:0;right:0;display:flex;border-bottom:1px solid var(--line);z-index:3;background:#fff}
+.stepper div{flex:1;text-align:center;padding:14px 0 11px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-faint);transition:.3s;position:relative}
+.stepper div.on{color:var(--amber-deep)}
+.stepper div.on::after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:3px;background:var(--amber-grad);border-radius:3px}
+.stage{position:absolute;inset:46px 0 6px;display:flex;flex-direction:column;opacity:0;transform:translateY(16px) scale(.99);transition:.55s var(--e);pointer-events:none;padding:20px 22px 14px}
+.viz[data-stage="learn"] .stage.learn,.viz[data-stage="adapt"] .stage.adapt,.viz[data-stage="act"] .stage.act{opacity:1;transform:none}
+.vprog{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--cool);z-index:3}
+.vprog i{display:block;height:100%;width:33%;background:var(--amber-grad);transition:width .5s var(--e)}
+
+/* product UI mockups */
+.ui{width:100%;height:100%;display:flex;flex-direction:column;text-align:left}
+.ui-bar{display:flex;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ui-bar .dot{width:9px;height:9px;border-radius:50%}
+.ui-bar .dot:nth-child(1){background:#ff5f57}.ui-bar .dot:nth-child(2){background:#febc2e}.ui-bar .dot:nth-child(3){background:#28c840}
+.ui-bar em{margin-left:7px;font-style:normal;font-size:12.5px;font-weight:800;color:var(--ink-soft);letter-spacing:.2px}
+.ui-bar .badge{margin-left:auto;font-size:10.5px;font-weight:800;color:var(--blue);background:rgba(0,119,182,.1);padding:3px 9px;border-radius:20px}
+.ui-bar .badge.live{color:var(--green);background:rgba(21,160,90,.12)}
+.ui-bar .badge.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;vertical-align:middle;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.q{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--ink);font-weight:600;margin-bottom:14px}
+.q svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:2;flex:none}
+.q .cur{width:1.5px;height:13px;background:var(--amber-deep);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.mini-kpis{display:flex;gap:8px;margin-bottom:12px}
+.mini-kpis div{flex:1;background:var(--cool);border-radius:9px;padding:9px 10px}
+.mini-kpis b{display:block;font-size:16px;font-weight:900;color:var(--navy);line-height:1.1}
+.mini-kpis b em{font-style:normal;font-size:11px;color:var(--green);font-weight:800;margin-left:3px}
+.mini-kpis span{font-size:10px;color:var(--ink-faint);font-weight:600}
+.chart{flex:1;min-height:96px;border-radius:9px;background:var(--cool);position:relative;overflow:hidden}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.insight{margin-top:12px;display:flex;gap:8px;align-items:flex-start;font-size:11.5px;font-weight:500;color:var(--ink-soft);background:var(--warm);border:1px solid rgba(251,170,15,.32);border-radius:9px;padding:9px 11px;line-height:1.4}
+.insight b{color:var(--amber-deep);font-weight:800}
+.insight .sp{font-size:13px;line-height:1}
+/* costlyzr */
+.save{display:flex;align-items:baseline;gap:9px;margin-bottom:12px}
+.save b{font-size:38px;font-weight:900;color:var(--green);line-height:1}
+.save span{font-size:12px;color:var(--ink-faint);font-weight:600}
+.optrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:12px;font-weight:600;color:var(--ink)}
+.optrow .ck{width:18px;height:18px;border-radius:50%;background:rgba(21,160,90,.14);color:var(--green);display:grid;place-items:center;font-size:11px;font-weight:900;flex:none}
+.optrow .amt{margin-left:auto;font-weight:800;color:var(--green);font-size:11.5px}
+/* vaani */
+.callhead{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.callhead .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px;flex:none}
+.callhead .who b{font-size:13px;font-weight:800;display:block}.callhead .who span{font-size:10.5px;color:var(--ink-faint);font-weight:600}
+.callhead .tmr{margin-left:auto;font-size:12px;font-weight:800;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.wave{display:flex;align-items:center;gap:3px;height:34px;margin-bottom:14px;padding:0 2px}
+.wave i{flex:1;border-radius:2px;background:linear-gradient(var(--cyan),var(--blue));animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(odd){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(4n){animation-delay:.45s}
+@keyframes wv{0%,100%{height:20%}50%{height:100%}}
+.bub{max-width:84%;padding:9px 12px;border-radius:13px;font-size:12px;margin-bottom:9px;line-height:1.4;font-weight:500}
+.bub.caller{background:var(--cool);color:var(--ink);border-bottom-left-radius:3px}
+.bub.agent{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;margin-left:auto;border-bottom-right-radius:3px}
+.status{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--green);background:rgba(21,160,90,.1);border-radius:9px;padding:9px 11px}
+.status .ck{width:16px;height:16px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:900}
+
+.steps{padding:16vh 0}
+.step{min-height:84vh;display:flex;flex-direction:column;justify-content:center}
+.step .plat{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.step .plat::before{content:"";width:22px;height:2px;background:var(--amber-grad);border-radius:2px}
+.step h2{margin-bottom:16px}.step p{font-size:17px;font-weight:300;color:var(--ink-soft);line-height:1.6;max-width:42ch}
+.step .pill{margin-top:18px;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px 13px;width:fit-content}
+.step .pill b{color:var(--amber-deep)}
+
+/* generic section + reveal */
+section.band{padding:84px 0;border-top:1px solid var(--line)}
+.intro{max-width:64ch;margin-bottom:40px}.intro h2{margin-bottom:14px}
+.reveal{opacity:0;transform:translateY(26px);transition:.8s var(--e)}.reveal.in{opacity:1;transform:none}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.4s var(--e)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:var(--cyan)}
+.card .pt{font-size:12.5px;font-weight:700;color:var(--amber-deep);margin-bottom:7px;line-height:1.35}
+.card h3{font-size:18px;font-weight:800;margin-bottom:7px}.card p{font-size:13.5px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.card .tag{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.card .subp{margin-top:12px;font-size:12px;font-weight:500;color:var(--ink-faint);line-height:1.5}
+
+/* intelligence layer (backbone) */
+.layer{background:linear-gradient(180deg,#fff,var(--warm))}
+.layergrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.lcard{background:#fff;border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:16px;padding:28px 28px 26px;transition:.4s var(--e)}
+.lcard:nth-child(2),.lcard:nth-child(3){border-left-color:var(--amber)}
+.lcard:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.lcard h3{font-size:20px;font-weight:800;margin-bottom:9px}.lcard h3 .tm{font-size:12px;vertical-align:super;color:var(--ink-faint);font-weight:600}
+.lcard p{font-size:14px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+
+/* extended services strip */
+.more{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.more .lab{font-size:13px;font-weight:700;color:var(--ink-faint);margin-right:4px}
+.more a{font-size:13.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;transition:.3s var(--e)}
+.more a:hover{border-color:var(--cyan);background:var(--cool);transform:translateY(-2px)}
+
+/* trust */
+.trust{background:var(--cool);border-top:1px solid var(--line);padding:34px 0}
+.trust .row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.trust .m{display:flex;gap:36px;flex-wrap:wrap}
+.trust .m div b{display:block;font-size:30px;font-weight:900;color:var(--navy);line-height:1}.trust .m div b em{font-style:normal;color:var(--amber-deep)}
+.trust .m div span{font-size:12px;font-weight:500;color:var(--ink-soft)}
+.trust .b{display:flex;gap:8px;flex-wrap:wrap}.trust .b span{font-size:12px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:8px}
+
+/* proof / case studies */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;border-top:3px solid var(--amber);display:flex;flex-direction:column;transition:.4s var(--e)}
+.kpi:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.kpi b{display:block;font-size:40px;font-weight:900;color:var(--amber-deep);line-height:1}
+.kpi .sec{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--blue);margin-bottom:8px}
+.kpi h4{font-size:15px;font-weight:800;margin:10px 0 6px}.kpi p{font-size:12.5px;font-weight:300;color:var(--ink-soft);margin-bottom:14px}
+.kpi .rd{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:6px;align-items:center}.kpi .rd .arr{transition:.3s}.kpi:hover .rd .arr{transform:translateX(4px)}
+
+/* industries */
+.ind{display:flex;flex-wrap:wrap;gap:11px}
+.ind a{font-size:15px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 20px;transition:.3s var(--e)}
+.ind a:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+
+/* insights — editorial list */
+.posts{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;border-top:1px solid var(--line)}
+.post{display:flex;flex-direction:column;padding:24px 2px;border-bottom:1px solid var(--line);transition:.3s var(--e)}
+.post:hover{padding-left:8px}
+.post .cat{font-size:11px;font-weight:800;letter-spacing:.4px;color:var(--blue);margin-bottom:10px}
+.post h3{font-size:18px;font-weight:800;line-height:1.28;margin-bottom:14px;max-width:30ch}
+.post .meta{margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:500;color:var(--ink-faint)}
+.post .meta .go{color:var(--amber-deep);font-weight:800;transition:.3s}.post:hover .meta .go{transform:translateX(4px)}
+
+/* final cta */
+.final{padding:0;margin:84px 0}
+.cta{background:linear-gradient(135deg,var(--ink),var(--navy) 70%);border-radius:28px;padding:66px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;right:-8%;top:-30%;width:50%;height:160%;background:radial-gradient(circle,rgba(251,170,15,.4),transparent 60%)}
+.cta h2{color:#fff;position:relative}.cta p{position:relative;font-size:17px;font-weight:300;color:rgba(255,255,255,.85);max-width:52ch;margin:14px auto 26px}
+.cta .ctas{position:relative;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}.cta .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+
+footer{background:var(--ink);color:#9fbdd6;padding:56px 0 28px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.fg .logo img{height:34px;filter:brightness(0) invert(1);opacity:.92}
+.fg p{font-size:13px;font-weight:300;color:#8fb0ca;margin-top:14px;max-width:34ch}
+footer h5{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}footer ul a{font-size:13px;font-weight:300;color:#9fbdd6}footer ul a:hover{color:var(--amber)}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#7fa0bb;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media(max-width:980px){.scrolly .inner{grid-template-columns:1fr}.viz{position:static;height:auto;margin:0 0 10px}.vcard{height:480px;max-width:none}.step{min-height:auto;padding:34px 0}.grid4,.kpis,.layergrid,.fg{grid-template-columns:repeat(2,1fr)}.posts{grid-template-columns:1fr}.trust .row{flex-direction:column;align-items:flex-start}nav{display:none}}
+@media(max-width:560px){.grid4,.kpis,.layergrid,.fg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="vtag">Voice: Operator</div>
+<header><div class="bar wrap">
+  <a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a>
+  <nav><a href="#services">Services</a><a href="#platforms">Platforms</a><a href="#industries">Industries</a><a href="#proof">Work</a><a href="#insights">Insights</a><a href="#">Company</a></nav>
+  <a class="btn amber-btn" href="#cta">Contact <span class="arr">→</span></a>
+</div></header>
+
+<!-- HERO -->
+<section class="hero"><span class="gridbg"></span><div class="wrap">
+  <h1>Engineered to run.<br>Built to <span class="rot"><ul><li>think.</li><li>adapt.</li><li>act.</li><li>scale.</li><li>think.</li></ul></span></h1>
+  <p class="sub">We build the systems you run the business on — and the intelligence inside them. Designed, shipped and operated end to end, so they hold up in production, not just in a demo.</p>
+  <div class="ctas"><a class="btn amber-btn" href="#cta">Start a conversation <span class="arr">→</span></a><a class="lnk" href="#demo">See it running <span class="arr">→</span></a></div>
+</div></section>
+
+<!-- SCROLLYTELLING: real product UI, learn / adapt / act -->
+<div class="scrolly" id="demo"><div class="wrap inner">
+  <div class="viz" data-stage="learn">
+    <div class="vcard">
+      <div class="stepper"><div class="s-learn">Learn</div><div class="s-adapt">Adapt</div><div class="s-act">Act</div></div>
+
+      <!-- iDashboard -->
+      <div class="stage learn"><div class="ui">
+        <div class="ui-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><em>iDashboard</em><span class="badge">Live data</span></div>
+        <div class="q"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4-4"/></svg>Why did margin dip in Germany last quarter?<span class="cur"></span></div>
+        <div class="mini-kpis"><div><b>€4.2M</b><span>Revenue</span></div><div><b>18.4%<em>▼</em></b><span>Gross margin</span></div><div><b>+24%<em>▲</em></b><span>Forecast acc.</span></div></div>
+        <div class="chart"><svg viewBox="0 0 300 100" preserveAspectRatio="none"><polygon points="0,72 40,64 80,68 120,46 160,54 200,34 240,42 300,26 300,100 0,100" fill="rgba(0,188,225,.14)"/><polyline points="0,72 40,64 80,68 120,46 160,54 200,34 240,42 300,26" fill="none" stroke="#00BCE1" stroke-width="2.5"/><circle cx="200" cy="34" r="4" fill="#fbaa0f"/></svg></div>
+        <div class="insight"><span class="sp">✦</span><span><b>Found it:</b> freight costs in DE rose 3.1% — the single biggest drag on margin. Ask a follow-up in plain English.</span></div>
+      </div></div>
+
+      <!-- CostlyzrEdge -->
+      <div class="stage adapt"><div class="ui">
+        <div class="ui-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><em>CostlyzrEdge</em><span class="badge">AWS · Azure · K8s</span></div>
+        <div class="save"><b>−35%</b><span>cloud run-rate,<br>and holding</span></div>
+        <div class="chart"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polygon points="0,16 50,22 100,20 150,40 200,52 250,60 300,66 300,80 0,80" fill="rgba(21,160,90,.13)"/><polyline points="0,16 50,22 100,20 150,40 200,52 250,60 300,66" fill="none" stroke="#15a05a" stroke-width="2.5"/></svg></div>
+        <div class="optrow"><span class="ck">✓</span>Idle compute right-sized<span class="amt">−€11.4k/mo</span></div>
+        <div class="optrow"><span class="ck">✓</span>Orphaned volumes removed<span class="amt">−€3.2k/mo</span></div>
+        <div class="optrow"><span class="ck">✓</span>K8s over-provisioning tuned<span class="amt">−€6.8k/mo</span></div>
+      </div></div>
+
+      <!-- Vaani -->
+      <div class="stage act"><div class="ui">
+        <div class="ui-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><em>Vaani</em><span class="badge live">On a call · FR</span></div>
+        <div class="callhead"><span class="av">V</span><div class="who"><b>Inbound · +33 ···</b><span>Auto-detected: French · 312ms latency</span></div><span class="tmr">00:48</span></div>
+        <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="bub caller">« Je voudrais réserver une révision pour jeudi. »</div>
+        <div class="bub agent">« Bien sûr — jeudi 14h à l'atelier de Lyon, ça vous convient ? »</div>
+        <div class="status"><span class="ck">✓</span>Appointment booked · confirmation SMS sent</div>
+      </div></div>
+
+      <div class="vprog"><i id="vbar"></i></div>
+    </div>
+  </div>
+  <div class="steps">
+    <div class="step" data-stage="learn"><div class="plat">iDashboard</div><h2>Ask your data a <span class="amber">question.</span></h2><p>No SQL. No ticket to the analytics team. iDashboard reads every system you run and answers in plain language — the way your best analyst would, except it doesn't sleep.</p><div class="pill">Used across <b>30+</b> data sources</div></div>
+    <div class="step" data-stage="adapt"><div class="plat">CostlyzrEdge</div><h2>Watch the bill <span class="amber">go down.</span></h2><p>CostlyzrEdge lives on your cloud and keeps cutting — finding idle spend, right-sizing, killing waste across AWS, Azure and Kubernetes. Up to 35% off the run-rate, and it keeps working after we leave.</p><div class="pill">Typical saving <b>up to 35%</b></div></div>
+    <div class="step" data-stage="act"><div class="plat">Vaani</div><h2>Answer every <span class="amber">call.</span></h2><p>Vaani picks up 24/7 in 12 languages, under 350ms — booking, ordering, resolving, following up. Not an IVR tree. A voice agent that actually closes the loop and logs it back to your CRM.</p><div class="pill"><b>12</b> languages · <b>&lt;350ms</b></div></div>
+  </div>
+</div></div>
+
+<!-- TRUST -->
+<div class="trust"><div class="wrap row">
+  <div class="m"><div><b>27<em>+</em></b><span>Years delivering</span></div><div><b>8,000<em>+</em></b><span>Projects shipped</span></div><div><b>900<em>+</em></b><span>Clients worldwide</span></div><div><b>1,000<em>+</em></b><span>Engineers</span></div></div>
+  <div class="b"><span>AWS</span><span>Microsoft Azure</span><span>Google Cloud</span><span>Databricks</span><span>ISO 27001</span></div>
+</div></div>
+
+<!-- INTELLIGENCE LAYER (backbone) -->
+<section class="band layer"><div class="wrap">
+  <div class="intro reveal"><h2>The intelligence layer behind <span class="amber">everything we build.</span></h2><p class="lead">Twenty-seven years of methodology, delivery muscle and engineering discipline. It's why our systems ship — and why they keep running long after we've moved on.</p></div>
+  <div class="layergrid reveal">
+    <div class="lcard"><h3>Alvarium<span class="tm">™</span></h3><p>Our design-led methodology. We map the business problem and the outcome before anyone writes code — so what ships is the thing you actually needed, not the thing that was easy to build.</p></div>
+    <div class="lcard"><h3>AI-Native Engineering</h3><p>Models, agents and automation designed in from the first commit — as core architecture, not a feature bolted on later. The same teams own the AI and the system it lives in.</p></div>
+    <div class="lcard"><h3>Global Delivery Models</h3><p>Onshore, nearshore and offshore pods that flex to your timezone, budget and pace. A thousand engineers, one standard of work — wherever the work happens.</p></div>
+    <div class="lcard"><h3>Engineering DNA</h3><p>Ownership, discipline and a stubborn refusal to ship something that won't hold up. It's what keeps complex systems calm at 2am — and it doesn't show up on a slide.</p></div>
+  </div>
+</div></section>
+
+<!-- SERVICES: built to run -->
+<section class="band" id="services"><div class="wrap">
+  <div class="intro reveal"><h2>Built to <span class="amber">run.</span></h2><p class="lead">Four practices we take end to end — design it, build it, operate it. Same teams, from first commit to the 2am page.</p></div>
+  <div class="grid4 reveal">
+    <div class="card"><div class="tag">ADAM</div><h3>Application Development &amp; Maintenance</h3><p>Build the apps you run the business on — then keep them fast, secure and current. Modernize the legacy stack without stopping the line.</p><div class="subp">Software Engineering · Application Modernization · Managed Services · Enterprise Mobility</div></div>
+    <div class="card"><div class="tag">PES</div><h3>Product Engineering Services</h3><p>Your product, engineered from whiteboard to roadmap — conceived, migrated, and kept evolving release after release.</p><div class="subp">Product Conceptualization · Product Migration · Lifecycle Management</div></div>
+    <div class="card"><div class="tag">Cloud</div><h3>Cloud Transformation</h3><p>Move, run and modernize on cloud without the bill shock — migration, infra and managed ops, with FinOps wired in from day one.</p><div class="subp">Migration &amp; Modernization · Infrastructure &amp; Management · Managed Services</div></div>
+    <div class="card"><div class="tag">Cyber</div><h3>Cybersecurity Services</h3><p>Defend the systems we build and the ones you already run — detection, response and governance, operated to ISO 27001.</p><div class="subp">Defence · Detection &amp; Response · Governance · ISO 27001</div></div>
+  </div>
+  <div class="more reveal"><span class="lab">Also:</span><a href="#">Quality Engineering</a><a href="#">AI / ML Engineering</a><a href="#">Digital Experience (DX)</a><a href="#">Consulting &amp; Advisory</a><a href="#">Professional Services</a></div>
+</div></section>
+
+<!-- PLATFORMS -->
+<section class="band" id="platforms"><div class="wrap">
+  <div class="intro reveal"><h2>Gateway <span class="amber">Platforms.</span></h2><p class="lead">Not slideware. Seven products we built, shipped and still operate ourselves — in production, earning their keep every day.</p></div>
+  <div class="grid4 reveal">
+    <div class="card"><h3>iDashboard</h3><div class="pt">Your data analyst that never sleeps</div><p>Connect, analyze and visualize any data in plain language — no SQL, no analyst bottleneck.</p></div>
+    <div class="card"><h3>Vaani</h3><div class="pt">A voice agent that never misses a call</div><p>Books, takes orders, answers and follows up 24/7 — 12 languages, CRM-connected, live in days.</p></div>
+    <div class="card"><h3>CostlyzrEdge</h3><div class="pt">Smarter cloud. Leaner costs.</div><p>FinOps automation across AWS, Azure and Kubernetes — savings of up to 35%, on autopilot.</p></div>
+    <div class="card"><h3>FinFacets</h3><div class="pt">Decisions beyond ERP reporting</div><p>Strategic financial intelligence — predictive modelling and competitor analysis, in real time.</p></div>
+    <div class="card"><h3>AutoDAP</h3><div class="pt">Vehicle parts, identified by VIN</div><p>API-based, VIN-accurate parts data for the independent automotive aftermarket.</p></div>
+    <div class="card"><h3>LEAP</h3><div class="pt">The right message, where it lands</div><p>Connects brands and retailers to customers using location, behaviour, interest and history.</p></div>
+    <div class="card"><h3>Dismanto</h3><div class="pt">Car dismantling, end to end</div><p>Managed ELV processing for dismantlers and recycling centres — built for EU ELV compliance.</p></div>
+    <a class="card" href="#" style="background:var(--ink);border:0;text-decoration:none"><h3 style="color:#fff">Explore all platforms</h3><div class="pt" style="color:var(--amber)">The Gateway product suite</div><p style="color:rgba(255,255,255,.72)">See every platform we've built and run, end to end.</p></a>
+  </div>
+</div></section>
+
+<!-- PROOF -->
+<section class="band" id="proof"><div class="wrap">
+  <div class="intro reveal"><h2>Proof over <span class="amber">promises.</span></h2><p class="lead">Real engagements — each one tied to the number that actually mattered to the team running it.</p></div>
+  <div class="kpis reveal">
+    <div class="kpi"><div class="sec">Financial Services</div><b>+38%</b><h4>Straight-through processing</h4><p>Intelligent intake auto-approved high-volume claims that used to sit in a queue.</p><a class="rd" href="#">Read the story <span class="arr">→</span></a></div>
+    <div class="kpi"><div class="sec">Retail &amp; CPG</div><b>+24%</b><h4>Forecast accuracy</h4><p>Demand planning that recalibrates to live signals instead of last month's guess.</p><a class="rd" href="#">Read the story <span class="arr">→</span></a></div>
+    <div class="kpi"><div class="sec">Industrial &amp; Auto</div><b>4.6/5</b><h4>Customer satisfaction</h4><p>A voice desk that answers every call, in any language, around the clock.</p><a class="rd" href="#">Read the story <span class="arr">→</span></a></div>
+    <div class="kpi"><div class="sec">Cloud · FinOps</div><b>−31%</b><h4>Cloud run-rate</h4><p>Spend turned from a monthly surprise into a number the team controls.</p><a class="rd" href="#">Read the story <span class="arr">→</span></a></div>
+  </div>
+</div></section>
+
+<!-- INDUSTRIES -->
+<section class="band" id="industries"><div class="wrap">
+  <div class="intro reveal"><h2>Depth where it <span class="amber">counts.</span></h2><p class="lead">We've shipped in these sectors for years. The edge cases that trip up newcomers are already in our muscle memory.</p></div>
+  <div class="ind reveal"><a href="#">Financial Services</a><a href="#">Healthcare &amp; Life Sciences</a><a href="#">Retail &amp; CPG</a><a href="#">Industrial &amp; Automotive</a><a href="#">Transport &amp; Logistics</a><a href="#">Software &amp; ISVs</a><a href="#">Energy &amp; Utilities</a></div>
+</div></section>
+
+<!-- INSIGHTS -->
+<section class="band" id="insights"><div class="wrap">
+  <div class="intro reveal"><h2>From the <span class="amber">engine room.</span></h2><p class="lead">Field notes from the people who build and operate this stuff — not the marketing department.</p></div>
+  <div class="posts reveal">
+    <a class="post" href="#"><div class="cat">AI ENGINEERING</div><h3>"Production-grade" AI: what it means when the demo is over</h3><div class="meta"><span>May 2026 · 6 min</span><span class="go">Read →</span></div></a>
+    <a class="post" href="#"><div class="cat">MODERNIZATION</div><h3>Modernizing a legacy stack without stopping the line</h3><div class="meta"><span>May 2026 · 5 min</span><span class="go">Read →</span></div></a>
+    <a class="post" href="#"><div class="cat">CLOUD · FINOPS</div><h3>Why your cloud bill keeps climbing — and the fix that sticks</h3><div class="meta"><span>Apr 2026 · 7 min</span><span class="go">Read →</span></div></a>
+    <a class="post" href="#"><div class="cat">DELIVERY</div><h3>The quiet case for nearshore engineering in 2026</h3><div class="meta"><span>Apr 2026 · 4 min</span><span class="go">Read →</span></div></a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<div class="final"><div class="wrap"><div class="cta reveal" id="cta">
+  <h2>Tell us what needs to run — and think.</h2>
+  <p>Bring the problem you can't get past. We'll bring the methodology, the platforms and the engineers to make it real — and keep it running.</p>
+  <div class="ctas"><a class="btn amber-btn" href="#">Book a 30-min call <span class="arr">→</span></a><a class="btn ghost" href="#services">Explore services</a></div>
+</div></div></div>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a><p>Intelligent systems that learn, adapt and act — designed, built and operated end to end.</p></div>
+    <div><h5>Services</h5><ul><li><a href="#">ADAM</a></li><li><a href="#">Product Engineering</a></li><li><a href="#">Cloud Transformation</a></li><li><a href="#">Cybersecurity</a></li><li><a href="#">Consulting &amp; Advisory</a></li></ul></div>
+    <div><h5>Platforms</h5><ul><li><a href="#">iDashboard</a></li><li><a href="#">Vaani</a></li><li><a href="#">CostlyzrEdge</a></li><li><a href="#">AutoDAP</a></li><li><a href="#">LEAP</a></li><li><a href="#">Dismanto</a></li><li><a href="#">FinFacets</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Industries</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 The Gateway Digital</span><span>Privacy · Terms</span></div>
+</div></footer>
+
+<script>
+const viz=document.querySelector('.viz');
+const steps=[...document.querySelectorAll('.step')];
+const items={learn:document.querySelector('.s-learn'),adapt:document.querySelector('.s-adapt'),act:document.querySelector('.s-act')};
+const vbar=document.getElementById('vbar');
+const PCT={learn:33,adapt:66,act:100};
+function setStage(s){viz.dataset.stage=s;for(const k in items)items[k].classList.toggle('on',k===s);vbar.style.width=PCT[s]+'%';}
+function onScroll(){const mid=innerHeight/2;let best=steps[0],bd=Infinity;
+  steps.forEach(st=>{const r=st.getBoundingClientRect();const c=(r.top+r.bottom)/2;const d=Math.abs(c-mid);if(d<bd){bd=d;best=st;}});
+  if(best)setStage(best.dataset.stage);}
+addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);setStage('learn');onScroll();
+
+const revs=[...document.querySelectorAll('.reveal')];
+function onReveal(){const t=innerHeight*0.86;revs.forEach(el=>{if(el.getBoundingClientRect().top<t)el.classList.add('in');});}
+addEventListener('scroll',onReveal,{passive:true});onReveal();
+</script>
+</body>
+</html>

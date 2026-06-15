@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gateway Digital — Option 4 (Conversational)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{--cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--cool:#f1f7fb;--warm:#fff8ee;--line:rgba(12,34,54,.11);--line2:rgba(12,34,54,.18);--amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);--sh:0 26px 60px -38px rgba(12,34,54,.45)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;font-size:16px;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+h1{font-size:clamp(30px,4.2vw,52px);font-weight:900;line-height:1.06;letter-spacing:-1.4px}
+h2{font-size:clamp(28px,3vw,40px);font-weight:900;line-height:1.08;letter-spacing:-1px}
+.amber{background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:17px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.lead{font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border-radius:11px;padding:13px 22px;border:0;cursor:pointer;transition:.3s var(--e)}
+.btn.amber-btn{background:var(--amber-grad);color:#3a2400;box-shadow:0 16px 30px -16px rgba(251,170,15,.6)}
+.btn.amber-btn:hover{transform:translateY(-2px)}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,252,253,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:26px;padding:13px 0}.logo img{height:36px}
+nav{display:flex;gap:8px;margin-left:auto}nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 6px}nav a:hover{color:var(--amber-deep)}
+
+/* hero + assistant */
+.hero{padding:122px 0 70px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;top:-25%;right:-10%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.13),transparent 60%);z-index:-1}
+.hero .g{display:grid;grid-template-columns:.92fr 1.08fr;gap:48px;align-items:center}
+.hero .sub{margin:20px 0 10px;max-width:42ch}
+.tiny{font-size:12.5px;color:var(--ink-faint);font-weight:500;margin-top:16px}
+
+.assistant{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column;height:480px}
+.as-top{display:flex;align-items:center;gap:10px;padding:15px 18px;border-bottom:1px solid var(--line)}
+.as-top .av{width:30px;height:30px;border-radius:9px;background:var(--amber-grad);display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px}
+.as-top b{font-size:14px;font-weight:800}.as-top span{font-size:11.5px;color:var(--ink-faint);font-weight:500}
+.as-top .live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#19c37d}
+.as-top .live i{width:8px;height:8px;border-radius:50%;background:#19c37d;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.msgs{flex:1;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,#fbfdff,#f5f9fc)}
+.msg{max-width:84%;font-size:13.5px;line-height:1.5;padding:12px 15px;border-radius:14px}
+.msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px;color:var(--ink)}
+.msg.me{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:5px;font-weight:500}
+.msg .rec{margin-top:10px;border:1px solid var(--line);border-radius:11px;padding:11px 13px;background:var(--cool);display:flex;align-items:center;gap:11px}
+.msg .rec .ic{width:34px;height:34px;border-radius:9px;background:var(--amber-grad);display:grid;place-items:center;color:#fff;font-weight:900;flex:none;font-size:13px}
+.msg .rec b{display:block;font-size:13px;font-weight:800;color:var(--ink)}.msg .rec span{font-size:11.5px;color:var(--ink-soft);font-weight:300}
+.msg .rec .go{margin-left:auto;color:var(--amber-deep);font-weight:800}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:14px 16px;background:#fff;border:1px solid var(--line);border-radius:14px;border-bottom-left-radius:5px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--ink-faint);animation:bounce 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding:0 18px 12px}
+.chip{font-size:12.5px;font-weight:600;color:var(--navy);background:var(--cool);border:1px solid var(--line);padding:8px 13px;border-radius:30px;cursor:pointer;transition:.25s}
+.chip:hover{border-color:var(--amber);color:var(--amber-deep);background:#fff}
+.as-in{display:flex;gap:10px;padding:14px 16px;border-top:1px solid var(--line)}
+.as-in input{flex:1;border:1px solid var(--line2);border-radius:11px;padding:12px 14px;font-family:inherit;font-size:14px;outline:none}
+.as-in input:focus{border-color:var(--cyan)}
+.as-in button{border:0;background:var(--amber-grad);color:#3a2400;font-weight:800;border-radius:11px;padding:0 18px;cursor:pointer}
+
+/* supporting */
+section{padding:80px 0;border-top:1px solid var(--line)}
+.trust{background:var(--cool)}.trust .row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.trust .m{font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft)}
+.trust .b{display:flex;gap:9px;flex-wrap:wrap}.trust .b span{font-size:12px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:8px}
+.intro{max-width:60ch;margin-bottom:36px}.eyebrow{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--amber-deep);margin-bottom:14px}.intro h2{margin-bottom:12px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.4s var(--e)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:var(--cyan)}
+.card h3{font-size:18px;font-weight:800;margin-bottom:7px}.card p{font-size:13.5px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.cta{background:linear-gradient(135deg,var(--ink),var(--navy) 70%);border-radius:28px;padding:64px 40px;text-align:center;color:#fff;margin:80px 0}
+.cta h2{color:#fff}.cta p{font-size:17px;font-weight:300;color:rgba(255,255,255,.85);max-width:50ch;margin:14px auto 26px}
+.intro p{font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;border-top:3px solid var(--amber)}
+.kpi b{display:block;font-size:40px;font-weight:900;color:var(--amber-deep);line-height:1}
+.kpi h4{font-size:14px;font-weight:800;margin:8px 0 3px}.kpi p{font-size:12.5px;font-weight:300;color:var(--ink-soft)}
+.ind{display:flex;flex-wrap:wrap;gap:11px}
+.ind a{font-size:15px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 20px;transition:.3s var(--e)}
+.ind a:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+footer{background:var(--ink);color:#9fbdd6;padding:56px 0 28px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.fg .logo img{height:32px;filter:brightness(0) invert(1);opacity:.92}
+.fg p{font-size:13px;font-weight:300;color:#8fb0ca;margin-top:14px;max-width:34ch}
+footer h5{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}footer ul a{font-size:13px;font-weight:300;color:#9fbdd6}footer ul a:hover{color:var(--amber)}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#7fa0bb;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.opt-flag{position:fixed;bottom:16px;left:16px;z-index:80;background:var(--ink);color:#fff;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:8px 14px;border-radius:20px;box-shadow:var(--sh)}
+@media(max-width:980px){.hero .g{grid-template-columns:1fr;gap:28px}.grid4,.kpis,.fg{grid-template-columns:repeat(2,1fr)}nav{display:none}}
+</style>
+</head>
+<body>
+<div class="opt-flag">Option 4 · Conversational</div>
+<header><div class="bar wrap"><a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a>
+<nav><a href="#">Services</a><a href="#">Platforms</a><a href="#">Industries</a><a href="#">Insights</a><a href="#">Company</a></nav>
+<a class="btn amber-btn" href="#">Contact <span class="arr">→</span></a></div></header>
+
+<section class="hero" style="border:0"><div class="wrap g">
+  <div>
+    <h1>Engineered to run.<br><span class="amber">Built to think.</span></h1>
+    <p class="sub">Tell us what you're trying to do. Our intelligent systems — and the team behind them — will point you to the fastest path.</p>
+    <p class="tiny">↘ Try it: ask a goal, or pick one</p>
+  </div>
+  <div class="assistant">
+    <div class="as-top"><span class="av">G</span><div><b>Gateway Assistant</b><br><span>design · build · operate</span></div><span class="live"><i></i>online</span></div>
+    <div class="msgs" id="msgs">
+      <div class="msg bot">Hi — I'm the Gateway Assistant. What are you trying to do? I'll route you to the right capability, platform, or proof point.</div>
+    </div>
+    <div class="chips" id="chips">
+      <span class="chip" data-k="cloud">Cut our cloud costs</span>
+      <span class="chip" data-k="voice">Deploy AI voice agents</span>
+      <span class="chip" data-k="modernize">Modernize a legacy product</span>
+      <span class="chip" data-k="secure">Secure our enterprise</span>
+    </div>
+    <div class="as-in"><input id="inp" placeholder="Ask The Gateway anything…" /><button id="send">Ask</button></div>
+  </div>
+</div></section>
+
+<section class="trust"><div class="wrap row">
+  <span class="m">27+ yrs · 8,000+ projects · 900+ clients · 1,000+ engineers</span>
+  <div class="b"><span>AWS</span><span>Microsoft Azure</span><span>Google Cloud</span><span>Databricks</span><span>ISO 27001</span></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="intro"><div class="eyebrow">Capabilities</div><h2>Four engines, made smarter by <span class="amber">AI.</span></h2></div>
+  <div class="grid4">
+    <div class="card"><h3>ADAM</h3><p>Application development &amp; maintenance — software, modernization, managed services.</p></div>
+    <div class="card"><h3>Product Engineering</h3><p>From conceptualization through migration to lifecycle management.</p></div>
+    <div class="card"><h3>Cloud Transformation</h3><p>Migrate, manage and modernize — with FinOps built in.</p></div>
+    <div class="card"><h3>Cybersecurity</h3><p>Defend, detect and respond — governed and ISO 27001.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="intro"><div class="eyebrow">Gateway Platforms</div><h2>Built to <span class="amber">run.</span></h2><p>Not slideware — products we've built and operate ourselves, live in production.</p></div>
+  <div class="grid4">
+    <div class="card"><h3>iDashboard</h3><p>Your data analyst that never sleeps — answers, alerts and insight on demand.</p></div>
+    <div class="card"><h3>Vaani</h3><p>Voice agents that work the phones 24/7 — 12 languages, sub-second.</p></div>
+    <div class="card"><h3>CostlyzrEdge</h3><p>FinOps automation that removes cloud waste across platforms.</p></div>
+    <div class="card"><h3>FinFacets</h3><p>Beyond ERP reporting — strategic financial intelligence on tap.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="intro"><div class="eyebrow">Proof over promises</div><h2>Outcomes, measured where <span class="amber">it counts.</span></h2></div>
+  <div class="kpis">
+    <div class="kpi"><b>+38%</b><h4>STP rate</h4><p>Financial Services · claims</p></div>
+    <div class="kpi"><b>+24%</b><h4>Forecast accuracy</h4><p>Retail &amp; CPG · demand</p></div>
+    <div class="kpi"><b>4.6/5</b><h4>CSAT</h4><p>Industrial &amp; Auto · voice desk</p></div>
+    <div class="kpi"><b>−31%</b><h4>Cloud run-rate</h4><p>FinOps · optimization</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="intro"><div class="eyebrow">Built for your sector</div><h2>Depth where it <span class="amber">counts.</span></h2></div>
+  <div class="ind"><a href="#">Financial Services</a><a href="#">Healthcare &amp; Life Sciences</a><a href="#">Retail &amp; CPG</a><a href="#">Industrial &amp; Automotive</a><a href="#">Software &amp; ISVs</a><a href="#">Energy &amp; Utilities</a></div>
+</div></section>
+
+<div class="wrap"><div class="cta">
+  <h2>Let's build something that runs — and thinks.</h2>
+  <p>The assistant gets you started — our engineers take it from there.</p>
+  <a class="btn amber-btn" href="#">Book a 30-min call <span class="arr">→</span></a>
+</div></div>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a><p>Intelligent systems that learn, adapt and act — designed, built and operated end-to-end.</p></div>
+    <div><h5>Services</h5><ul><li><a href="#">ADAM</a></li><li><a href="#">Product Engineering</a></li><li><a href="#">Cloud</a></li><li><a href="#">Cybersecurity</a></li></ul></div>
+    <div><h5>Platforms</h5><ul><li><a href="#">iDashboard</a></li><li><a href="#">Vaani</a></li><li><a href="#">CostlyzrEdge</a></li><li><a href="#">FinFacets</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Industries</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 The Gateway Digital</span><span>Privacy · Terms</span></div>
+</div></footer>
+
+<script>
+const REPLIES={
+  cloud:{t:"Cloud spend is usually 20–35% waste. <b>CostlyzrEdge</b> automates FinOps across your clouds — clients typically see a ~31% run-rate cut. I can set up a free teardown.",rec:["Ce","CostlyzrEdge","FinOps automation · Cloud Transformation"]},
+  voice:{t:"<b>Vaani</b> runs the phones 24/7 in 12 languages with sub-second response — and it learns from every call. Want to hear a sample flow?",rec:["Va","Vaani","Voice AI agents, live in production"]},
+  modernize:{t:"We modernize without a risky rewrite — <b>ADAM</b> + Product Engineering migrate incrementally, AI-assisted. One client hit 3.2× release velocity.",rec:["Ad","ADAM","App modernization · Product Engineering"]},
+  secure:{t:"<b>Cybersecurity Services</b> — defend, detect, respond — with governance and ISO 27001 designed in from day one across apps, cloud and identity.",rec:["Cy","Cybersecurity","Defend · detect · respond"]},
+  default:{t:"Got it. That spans a few of our engines — the fastest next step is a 20-minute scoping call where we map it to capabilities, a platform, and a similar project we've shipped.",rec:["G","Talk to an engineer","Book a 30-min scoping call"]}
+};
+const msgs=document.getElementById('msgs'), inp=document.getElementById('inp');
+function add(html,cls){const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=html;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+function typing(){const d=document.createElement('div');d.className='typing';d.innerHTML='<i></i><i></i><i></i>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+function respond(key,label){
+  add(label,'me');
+  const t=typing();
+  setTimeout(()=>{t.remove();const r=REPLIES[key]||REPLIES.default;
+    add(r.t+'<div class="rec"><span class="ic">'+r.rec[0]+'</span><div><b>'+r.rec[1]+'</b><span>'+r.rec[2]+'</span></div><span class="go">→</span></div>','bot');
+  },900);
+}
+document.getElementById('chips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;respond(c.dataset.k,c.textContent);});
+function sendText(){const v=inp.value.trim();if(!v)return;inp.value='';
+  const k=/cost|cloud|finops|spend/i.test(v)?'cloud':/voice|call|agent|phone/i.test(v)?'voice':/modern|legacy|migrat|rewrite/i.test(v)?'modernize':/secur|threat|risk|compliance/i.test(v)?'secure':'default';
+  respond(k,v);}
+document.getElementById('send').onclick=sendText;
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')sendText();});
+</script>
+</body>
+</html>

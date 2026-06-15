@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GD — Hero concept: Operating Picture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--grey:#bbbbbb;--mist:#ebebeb;
+  --ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--line:rgba(12,34,54,.10);--line2:rgba(12,34,54,.16);
+  --amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.wrap{width:100%;max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* ambience: warm light + the faintest engineering grid */
+.bg{position:fixed;inset:0;z-index:-2;pointer-events:none}
+.bg .warm{position:absolute;top:-20%;right:-8%;width:55vw;height:55vw;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.14),transparent 62%);filter:blur(8px)}
+.bg .cool{position:absolute;bottom:-25%;left:-10%;width:48vw;height:48vw;border-radius:50%;background:radial-gradient(circle,rgba(0,188,225,.08),transparent 64%)}
+.grid{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.45;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;-webkit-mask-image:radial-gradient(circle at 64% 40%,#000,transparent 72%);mask-image:radial-gradient(circle at 64% 40%,#000,transparent 72%)}
+
+/* header */
+header{position:fixed;top:0;left:0;right:0;z-index:20;background:rgba(251,252,253,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+header .bar{display:flex;align-items:center;gap:26px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:11px;font-weight:900;font-size:15px;letter-spacing:.4px;white-space:nowrap}
+.logo .mk{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--cyan),var(--navy));display:grid;place-items:center}
+.logo .mk svg{width:18px;height:18px}
+.logo small{display:block;font-weight:300;font-size:9px;letter-spacing:3.4px;color:var(--blue);margin-top:-2px}
+nav{display:flex;gap:8px;margin-left:auto}
+nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 4px;position:relative}
+nav a::after{content:"";position:absolute;left:4px;right:4px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
+nav a:hover{color:var(--navy)} nav a:hover::after{transform:scaleX(1)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;border-radius:10px;padding:12px 22px;border:0;cursor:pointer;transition:.3s var(--e)}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+.btn.amber{background:var(--amber-grad);color:#3a2400;box-shadow:0 14px 30px -16px rgba(251,170,15,.6)}
+.btn.amber:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}
+.btn.ghost:hover{border-color:var(--cyan);background:#f1f7fb}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding:118px 0 56px}
+.hero .grid2{display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center;width:100%}
+h1{font-size:clamp(2.3rem,4.9vw,4rem);font-weight:900;line-height:1.04;letter-spacing:-1.6px}
+h1 .amber{background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:clamp(1rem,1.3vw,1.14rem);font-weight:300;color:var(--ink-soft);max-width:46ch;margin:22px 0 16px;line-height:1.55}
+/* kinetic verb line */
+.verbs{display:flex;gap:8px;align-items:center;font-size:13px;font-weight:600;color:var(--ink-faint);letter-spacing:.4px;margin-bottom:30px}
+.verbs .v{transition:.4s var(--e);opacity:.4}
+.verbs .v.on{color:var(--amber-deep);opacity:1}
+.verbs .dot{width:4px;height:4px;border-radius:50%;background:var(--line2)}
+.ctas{display:flex;gap:13px;align-items:center}
+
+/* operating-picture console */
+.console{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 40px 80px -46px rgba(12,34,54,.42),0 2px 8px rgba(12,34,54,.04);overflow:hidden}
+.console .top{display:flex;align-items:center;gap:10px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.live{width:9px;height:9px;border-radius:50%;background:#19c37d;box-shadow:0 0 0 0 rgba(25,195,125,.5);animation:live 2s infinite}
+@keyframes live{70%{box-shadow:0 0 0 7px rgba(25,195,125,0)}}
+.console .top b{font-size:13px;font-weight:800;letter-spacing:.3px}
+.console .top span{font-size:11.5px;color:var(--ink-faint);font-weight:500}
+.console .top .badge{margin-left:auto;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--blue);background:#eef4f8;padding:5px 10px;border-radius:7px}
+/* signal */
+.signal{position:relative;height:132px;background:linear-gradient(180deg,#fbfdff,#f4f9fc)}
+.signal svg{position:absolute;inset:0;width:100%;height:100%}
+.signal .axis{stroke:var(--line);stroke-width:1}
+.signal .area{fill:url(#ag)}
+.signal .line{fill:none;stroke:url(#lg);stroke-width:2.4;stroke-linecap:round}
+.signal .flow{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:34 460;filter:drop-shadow(0 0 5px rgba(0,188,225,.9));animation:flow 3.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-494}}
+.signal .pulse{fill:var(--amber)}
+.signal .cap{position:absolute;left:18px;top:12px;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-faint)}
+/* state rows: Learn / Adapt / Act */
+.states{padding:14px 12px}
+.row{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:13px;transition:.4s var(--e)}
+.row.on{background:linear-gradient(90deg,#fff7e8,#fff)}
+.row .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:#eef4f8;color:var(--blue);flex:none;transition:.4s var(--e)}
+.row.on .ic{background:var(--amber-grad);color:#fff;box-shadow:0 10px 20px -10px rgba(251,170,15,.7)}
+.row .t b{display:block;font-size:14px;font-weight:800}
+.row .t span{font-size:12px;font-weight:300;color:var(--ink-soft)}
+.row .stat{margin-left:auto;font-size:12px;font-weight:700;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.row.on .stat{color:var(--amber-deep)}
+.row .bars{margin-left:auto;display:flex;gap:3px;align-items:flex-end;height:22px}
+.row .bars i{width:4px;background:var(--line2);border-radius:2px;transition:.4s var(--e)}
+.row.on .bars i{background:var(--cyan)}
+.floatcard{position:absolute;right:-14px;bottom:34px;background:#fff;border:1px solid var(--line);border-radius:13px;box-shadow:0 22px 44px -24px rgba(12,34,54,.4);padding:12px 15px;display:flex;align-items:center;gap:11px;animation:bob 6s var(--e) infinite}
+@keyframes bob{50%{transform:translateY(-9px)}}
+.floatcard .d{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#fff;font-weight:900}
+.floatcard b{font-size:12.5px;font-weight:800;display:block}.floatcard span{font-size:11px;color:var(--ink-soft);font-weight:300}
+
+@media(max-width:900px){.hero .grid2{grid-template-columns:1fr;gap:30px}nav{display:none}.floatcard{display:none}}
+</style>
+</head>
+<body>
+<div class="bg"><span class="warm"></span><span class="cool"></span></div>
+<div class="grid"></div>
+
+<header><div class="bar wrap">
+  <a class="logo" href="#"><span class="mk"><svg viewBox="0 0 24 24" fill="none"><path d="M8 17V8l4 5 4-5v9" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>THE GATEWAY<small>DIGITAL</small></span></a>
+  <nav><a href="#">Services</a><a href="#">Platforms</a><a href="#">Industries</a><a href="#">Insights</a><a href="#">Company</a></nav>
+  <a class="btn amber" href="#">Contact <span class="arr">→</span></a>
+</div></header>
+
+<section class="hero"><div class="grid2 wrap">
+  <div class="copy">
+    <h1>Engineered to run.<br><span class="amber">Built to think.</span></h1>
+    <p class="sub">We design, build, and operate intelligent systems that learn, adapt, and act — across applications, cloud, cybersecurity, and enterprise ecosystems.</p>
+    <div class="verbs"><span class="v" data-v="0">LEARN</span><span class="dot"></span><span class="v" data-v="1">ADAPT</span><span class="dot"></span><span class="v" data-v="2">ACT</span></div>
+    <div class="ctas">
+      <a class="btn amber" href="#">Start a conversation <span class="arr">→</span></a>
+      <a class="btn ghost" href="#">See what we build</a>
+    </div>
+  </div>
+
+  <div class="console">
+    <div class="top"><span class="live"></span><b>The Gateway</b><span>· operating in real time</span><span class="badge">Live</span></div>
+    <div class="signal">
+      <span class="cap">Throughput</span>
+      <svg viewBox="0 0 500 132" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0077B6"/><stop offset="1" stop-color="#00BCE1"/></linearGradient>
+          <linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="rgba(0,188,225,.22)"/><stop offset="1" stop-color="rgba(0,188,225,0)"/></linearGradient>
+        </defs>
+        <path class="area" d="M0 96 C 60 96,80 60,130 64 S 210 104,260 80 S 360 30,420 52 S 480 70,500 58 L500 132 L0 132 Z"/>
+        <path class="line" id="sig" d="M0 96 C 60 96,80 60,130 64 S 210 104,260 80 S 360 30,420 52 S 480 70,500 58"/>
+        <path class="flow" d="M0 96 C 60 96,80 60,130 64 S 210 104,260 80 S 360 30,420 52 S 480 70,500 58"/>
+        <circle class="pulse" id="dot" r="4" cx="0" cy="96"/>
+      </svg>
+    </div>
+    <div class="states">
+      <div class="row" data-s="0"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+        <div class="t"><b>Learn</b><span>Ingesting signals from every channel</span></div>
+        <div class="bars"><i style="height:40%"></i><i style="height:70%"></i><i style="height:55%"></i><i style="height:90%"></i></div></div>
+      <div class="row" data-s="1"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l3 3M15 15l3 3M18 6l-3 3M9 15l-3 3"/></svg></span>
+        <div class="t"><b>Adapt</b><span>Tuning models to live conditions</span></div>
+        <div class="bars"><i style="height:60%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:65%"></i></div></div>
+      <div class="row" data-s="2"><span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12l5 5L20 6"/></svg></span>
+        <div class="t"><b>Act</b><span>Executing decisions, end to end</span></div>
+        <div class="bars"><i style="height:75%"></i><i style="height:50%"></i><i style="height:95%"></i><i style="height:60%"></i></div></div>
+    </div>
+    <div class="floatcard"><span class="d">↗</span><div><b>99.98% uptime</b><span>governed &amp; secure</span></div></div>
+  </div>
+</div></section>
+
+<script>
+// kinetic Learn/Adapt/Act cycle (ties the console state to the verb line)
+const verbs=[...document.querySelectorAll('.verbs .v')];
+const rows=[...document.querySelectorAll('.row')];
+let i=0;
+function tick(){
+  verbs.forEach((v,k)=>v.classList.toggle('on',k===i));
+  rows.forEach((r,k)=>r.classList.toggle('on',k===i));
+  i=(i+1)%3;
+}
+tick(); setInterval(tick,1900);
+
+// move the pulse dot along the signal path
+const sig=document.getElementById('sig'), dot=document.getElementById('dot');
+const len=sig.getTotalLength();
+let t0=null;
+function move(ts){
+  if(!t0)t0=ts; const p=((ts-t0)/3400)%1; const pt=sig.getPointAtLength(p*len);
+  dot.setAttribute('cx',pt.x); dot.setAttribute('cy',pt.y);
+  requestAnimationFrame(move);
+}
+requestAnimationFrame(move);
+</script>
+</body>
+</html>

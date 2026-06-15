@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Gateway Digital — Engineered to run. Built to think.</title>
+<meta name="description" content="We design, build and operate AI-powered systems that learn, adapt and act — across applications, products, cloud and cybersecurity. Engineered to run, built to think." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{--cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--cool:#f1f7fb;--warm:#fff8ee;--green:#15a05a;--line:rgba(12,34,54,.11);--line2:rgba(12,34,54,.18);--amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);--sh:0 26px 60px -38px rgba(12,34,54,.45)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;font-size:16px;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+h1{font-size:clamp(30px,4.2vw,52px);font-weight:900;line-height:1.06;letter-spacing:-1.4px}
+h2{font-size:clamp(28px,3vw,40px);font-weight:900;line-height:1.08;letter-spacing:-1px}
+.amber{background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{font-size:17px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.lead{font-size:16px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;border-radius:11px;padding:13px 24px;border:0;cursor:pointer;transition:.3s var(--e)}
+.btn.amber-btn{background:var(--amber-grad);color:#3a2400;box-shadow:0 16px 30px -16px rgba(251,170,15,.6)}.btn.amber-btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}.btn.ghost:hover{border-color:var(--cyan);background:var(--cool)}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+.lnk{font-size:14px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:7px;align-items:center}.lnk .arr{transition:.3s}.lnk:hover .arr{transform:translateX(5px)}
+
+header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,252,253,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:26px;padding:13px 0}.logo img{height:38px}
+nav{display:flex;gap:8px;margin-left:auto}nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 6px;position:relative}
+nav a::after{content:"";position:absolute;left:6px;right:6px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
+nav a:hover{color:var(--navy)}nav a:hover::after{transform:scaleX(1)}
+
+/* hero — split: copy left, auto-looping product demo right */
+.hero{height:100vh;min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden;padding:96px 0 36px}
+.hero::after{content:"";position:absolute;top:-22%;right:-6%;width:60vw;height:60vw;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.13),transparent 60%);z-index:-1}
+.hero .gridbg{position:absolute;inset:0;z-index:-1;opacity:.5;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;-webkit-mask:radial-gradient(circle at 64% 46%,#000,transparent 72%);mask:radial-gradient(circle at 64% 46%,#000,transparent 72%);animation:drift 34s linear infinite}
+@keyframes drift{to{background-position:56px 56px}}
+.hero .inner{display:grid;grid-template-columns:1.02fr .98fr;gap:60px;align-items:center;width:100%}
+.heroL h1{margin-bottom:0}.heroL .sub{margin:18px 0 26px;max-width:46ch}
+.heroL .ctas{display:flex;gap:13px;flex-wrap:wrap}
+.heroL h1,.heroL .sub,.heroL .ctas{animation:rise .85s var(--e) both}
+.heroL .sub{animation-delay:.1s}.heroL .ctas{animation-delay:.2s}
+@keyframes rise{from{transform:translateY(22px)}to{transform:none}}
+.word{display:inline-block;height:1.18em;line-height:1.18em;overflow:hidden;vertical-align:bottom}
+.wroll{display:block}
+.wroll b{display:block;height:1.18em;line-height:1.18em;font-weight:900;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.heroR{animation:rise .9s var(--e) .15s both}
+
+/* product demo card */
+.vcard{position:relative;width:100%;max-width:460px;height:clamp(436px,calc(100vh - 188px),474px);margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--sh);overflow:hidden}
+.stepper{position:absolute;top:0;left:0;right:0;display:flex;border-bottom:1px solid var(--line);z-index:3;background:#fff}
+.stepper div{flex:1;text-align:center;padding:14px 0 11px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-faint);transition:.3s;position:relative;cursor:pointer}
+.stepper div.on{color:var(--amber-deep)}
+.stepper div.on::after{content:"";position:absolute;left:22px;right:22px;bottom:0;height:3px;background:var(--amber-grad);border-radius:3px}
+.vwin{position:absolute;inset:46px 0 6px;overflow:hidden}
+.track{display:flex;width:100%;height:100%;will-change:transform}
+.stage{flex:0 0 100%;width:100%;height:100%;display:flex;flex-direction:column;padding:20px 22px 14px}
+.vprog{position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--cool);z-index:3}
+.vprog i{display:block;height:100%;width:0;background:var(--amber-grad)}
+.vcap{margin:12px auto 0;max-width:468px;text-align:center;font-size:12.5px;font-weight:600;color:var(--ink-soft);transition:.35s var(--e)}
+.vcap b{color:var(--amber-deep);font-weight:800}
+
+/* product UI mockups */
+.ui{width:100%;height:100%;display:flex;flex-direction:column;text-align:left}
+.ui-bar{display:flex;align-items:center;gap:6px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.ui-bar .dot{width:9px;height:9px;border-radius:50%}
+.ui-bar .dot:nth-child(1){background:#ff5f57}.ui-bar .dot:nth-child(2){background:#febc2e}.ui-bar .dot:nth-child(3){background:#28c840}
+.ui-bar em{margin-left:7px;font-style:normal;font-size:12.5px;font-weight:800;color:var(--ink-soft);letter-spacing:.2px}
+.ui-bar .badge{margin-left:auto;font-size:10.5px;font-weight:800;color:var(--blue);background:rgba(0,119,182,.1);padding:3px 9px;border-radius:20px}
+.ui-bar .badge.live{color:var(--green);background:rgba(21,160,90,.12)}
+.ui-bar .badge.live::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:5px;vertical-align:middle;animation:pulse 1.4s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.q{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:10px;padding:10px 12px;font-size:12.5px;color:var(--ink);font-weight:600;margin-bottom:14px}
+.q svg{width:15px;height:15px;stroke:var(--blue);fill:none;stroke-width:2;flex:none}
+.q .cur{width:1.5px;height:13px;background:var(--amber-deep);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.mini-kpis{display:flex;gap:8px;margin-bottom:12px}
+.mini-kpis div{flex:1;background:var(--cool);border-radius:9px;padding:9px 10px}
+.mini-kpis b{display:block;font-size:16px;font-weight:900;color:var(--navy);line-height:1.1}
+.mini-kpis b em{font-style:normal;font-size:11px;color:var(--green);font-weight:800;margin-left:3px}
+.mini-kpis span{font-size:10px;color:var(--ink-faint);font-weight:600}
+.chart{flex:1;min-height:96px;border-radius:9px;background:var(--cool);position:relative;overflow:hidden}
+.chart svg{position:absolute;inset:0;width:100%;height:100%}
+.insight{margin-top:12px;display:flex;gap:8px;align-items:flex-start;font-size:11.5px;font-weight:500;color:var(--ink-soft);background:var(--warm);border:1px solid rgba(251,170,15,.32);border-radius:9px;padding:9px 11px;line-height:1.4}
+.insight b{color:var(--amber-deep);font-weight:800}
+.insight .sp{font-size:13px;line-height:1}
+.save{display:flex;align-items:baseline;gap:9px;margin-bottom:12px}
+.save b{font-size:38px;font-weight:900;color:var(--green);line-height:1}
+.save span{font-size:12px;color:var(--ink-faint);font-weight:600}
+.optrow{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line);font-size:12px;font-weight:600;color:var(--ink)}
+.optrow .ck{width:18px;height:18px;border-radius:50%;background:rgba(21,160,90,.14);color:var(--green);display:grid;place-items:center;font-size:11px;font-weight:900;flex:none}
+.optrow .amt{margin-left:auto;font-weight:800;color:var(--green);font-size:11.5px}
+.callhead{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.callhead .av{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--blue));display:grid;place-items:center;color:#fff;font-weight:900;font-size:13px;flex:none}
+.callhead .who b{font-size:13px;font-weight:800;display:block}.callhead .who span{font-size:10.5px;color:var(--ink-faint);font-weight:600}
+.callhead .tmr{margin-left:auto;font-size:12px;font-weight:800;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.wave{display:flex;align-items:center;gap:3px;height:34px;margin-bottom:14px;padding:0 2px}
+.wave i{flex:1;border-radius:2px;background:linear-gradient(var(--cyan),var(--blue));animation:wv 1s ease-in-out infinite}
+.wave i:nth-child(odd){animation-delay:.15s}.wave i:nth-child(3n){animation-delay:.3s}.wave i:nth-child(4n){animation-delay:.45s}
+@keyframes wv{0%,100%{height:20%}50%{height:100%}}
+.bub{max-width:84%;padding:9px 12px;border-radius:13px;font-size:12px;margin-bottom:9px;line-height:1.4;font-weight:500}
+.bub.caller{background:var(--cool);color:var(--ink);border-bottom-left-radius:3px}
+.bub.agent{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#fff;margin-left:auto;border-bottom-right-radius:3px}
+.status{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:800;color:var(--green);background:rgba(21,160,90,.1);border-radius:9px;padding:9px 11px}
+.status .ck{width:16px;height:16px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:10px;font-weight:900}
+
+/* generic capability scenes — ADAM · PES · Cloud · Cybersecurity, with AI woven through all */
+.canvas{flex:1;position:relative;border-radius:12px;overflow:hidden;background:radial-gradient(120% 90% at 70% 28%,rgba(0,188,225,.07),var(--cool));border:1px solid var(--line)}
+/* LEARN — four practices feeding one AI core */
+.canvas.learn{display:flex;align-items:center;gap:10px;padding:16px}
+.canvas.learn .srcs{display:flex;flex-direction:column;gap:11px;flex:none}
+.canvas.learn .src{font-size:11.5px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:8px;padding:8px 12px;animation:ping 3s var(--e) infinite}
+.canvas.learn .src:nth-child(2){animation-delay:.5s}.canvas.learn .src:nth-child(3){animation-delay:1s}.canvas.learn .src:nth-child(4){animation-delay:1.5s}
+@keyframes ping{0%,100%{border-color:var(--line);color:var(--ink-soft);box-shadow:none}16%{border-color:var(--cyan);color:var(--navy);box-shadow:0 0 0 3px rgba(0,188,225,.12)}}
+.canvas.learn .flow{flex:1;position:relative;height:2px;background:linear-gradient(90deg,transparent,var(--line),transparent);align-self:center}
+.canvas.learn .flow i{position:absolute;top:50%;width:7px;height:7px;border-radius:50%;background:var(--cyan);transform:translateY(-50%);animation:rightflow 1.8s linear infinite;box-shadow:0 0 8px rgba(0,188,225,.6)}
+.canvas.learn .flow i:nth-child(2){animation-delay:.45s}.canvas.learn .flow i:nth-child(3){animation-delay:.9s}.canvas.learn .flow i:nth-child(4){animation-delay:1.35s}
+@keyframes rightflow{0%{left:-4%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:104%;opacity:0}}
+.canvas.learn .core{flex:none;width:80px;height:80px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:radial-gradient(circle,rgba(0,188,225,.2),rgba(0,119,182,.06));border:1.5px solid rgba(0,188,225,.45);color:var(--blue);animation:corepulse 2.4s var(--e) infinite}
+.canvas.learn .core svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+.canvas.learn .core b{font-size:11px;font-weight:900;letter-spacing:.6px;color:var(--navy)}
+@keyframes corepulse{0%,100%{box-shadow:0 0 0 0 rgba(0,188,225,.28)}50%{box-shadow:0 0 0 11px rgba(0,188,225,0)}}
+/* ADAPT — modern architecture engineered/modernized, AI throughout */
+.canvas.adapt{display:flex;flex-direction:column;justify-content:center;gap:9px;padding:22px 24px}
+.canvas.adapt .aitag{position:absolute;top:11px;right:12px;font-size:10px;font-weight:800;letter-spacing:.4px;color:var(--amber-deep);background:var(--warm);border:1px solid rgba(251,170,15,.35);border-radius:20px;padding:4px 9px;z-index:2}
+.canvas.adapt .layers{display:flex;flex-direction:column;gap:9px}
+.canvas.adapt .layer{font-size:12px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:9px;padding:11px 13px;opacity:0;transform:translateX(-14px);animation:layerin 3.6s var(--e) infinite}
+.canvas.adapt .layer:nth-child(2){animation-delay:.22s}.canvas.adapt .layer:nth-child(3){animation-delay:.44s}.canvas.adapt .layer:nth-child(4){animation-delay:.66s}
+@keyframes layerin{0%{opacity:0;transform:translateX(-14px)}16%,82%{opacity:1;transform:none}100%{opacity:1}}
+.canvas.adapt .sweep{position:absolute;left:0;right:0;height:50px;top:-50px;background:linear-gradient(180deg,rgba(251,170,15,.22),transparent);animation:sweep 3.6s var(--e) infinite;pointer-events:none}
+@keyframes sweep{0%{top:-50px;opacity:0}26%{opacity:1}72%{top:100%;opacity:1}73%,100%{opacity:0}}
+/* ACT — AI orchestrating across the estate */
+.canvas.act{display:flex;flex-direction:column;padding:14px 16px;gap:10px}
+.canvas.act .mesh{width:100%;height:116px;flex:none}
+.canvas.act .mesh line{stroke:var(--cyan);stroke-width:1.5;stroke-dasharray:5 6;animation:dash 1.2s linear infinite;opacity:.55}
+@keyframes dash{to{stroke-dashoffset:-22}}
+.canvas.act .mesh circle{fill:#fff;stroke:var(--blue);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:nodep 2s ease-in-out infinite}
+.canvas.act .mesh circle:nth-of-type(2){animation-delay:.3s}.canvas.act .mesh circle:nth-of-type(3){animation-delay:.6s;fill:rgba(251,170,15,.2);stroke:var(--amber-deep)}.canvas.act .mesh circle:nth-of-type(4){animation-delay:.9s}.canvas.act .mesh circle:nth-of-type(5){animation-delay:1.2s}
+@keyframes nodep{0%,100%{transform:scale(1)}50%{transform:scale(1.16)}}
+.canvas.act .mesh text{font:900 9px Montserrat,sans-serif;fill:var(--amber-deep)}
+.canvas.act .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center}
+.canvas.act .chip{font-size:11px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);border-radius:20px;padding:6px 11px;opacity:0;animation:chipin 4s var(--e) infinite}
+.canvas.act .chip:nth-child(2){animation-delay:.6s}.canvas.act .chip:nth-child(3){animation-delay:1.2s}.canvas.act .chip:nth-child(4){animation-delay:1.8s}
+@keyframes chipin{0%{opacity:0;transform:translateY(8px)}10%{opacity:1;transform:none}85%{opacity:1}100%{opacity:0}}
+
+/* hero word (synced to phase) */
+.word{display:inline-block;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;transition:opacity .3s var(--e),transform .3s var(--e)}
+.word.out{opacity:0;transform:translateY(-9px)}
+
+/* ===== phased hero demo — Learn → Adapt → Act, each a distinct animated state (AI-page craft) ===== */
+.demo{position:relative;width:100%;max-width:462px;height:clamp(440px,calc(100vh - 184px),478px);margin-left:auto;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#fff,#f4fafe);border:1px solid var(--line);box-shadow:0 34px 84px -34px rgba(5,26,46,.36),0 10px 24px -12px rgba(5,26,46,.12),0 1px 0 rgba(255,255,255,.75) inset}
+.demo::before{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(56% 44% at 84% 6%,rgba(251,170,15,.14),transparent 66%),radial-gradient(64% 52% at 10% 100%,rgba(0,188,225,.13),transparent 70%);pointer-events:none}
+.demo .fld{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(0,119,182,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(0,119,182,.05) 1px,transparent 1px);background-size:38px 38px;-webkit-mask:radial-gradient(ellipse at 50% 42%,#000,transparent 72%);mask:radial-gradient(ellipse at 50% 42%,#000,transparent 72%)}
+.segz{position:absolute;top:15px;left:50%;transform:translateX(-50%);z-index:6;display:flex;gap:3px;background:rgba(255,255,255,.74);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:30px;padding:4px}
+.segz b{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);padding:6px 14px;border-radius:30px;transition:.4s var(--e);cursor:pointer}
+.segz b.on{background:#fff;color:var(--amber-deep);box-shadow:0 8px 18px -10px rgba(12,34,54,.5)}
+.demcap{position:absolute;left:0;right:0;bottom:0;z-index:6;padding:13px 20px;text-align:center;font-size:12px;font-weight:600;color:var(--ink-soft);border-top:1px solid var(--line);background:#fff;transition:opacity .4s var(--e)}
+.ph{position:absolute;inset:60px 24px 50px;z-index:2;opacity:0;transform:translateY(16px) scale(.985);transition:opacity .55s var(--e),transform .55s var(--e);pointer-events:none}
+.demo[data-ph="learn"] .ph.learn,.demo[data-ph="adapt"] .ph.adapt,.demo[data-ph="act"] .ph.act{opacity:1;transform:none}
+.orb{border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;background:radial-gradient(circle at 38% 30%,#23cdee,#0077b6 64%,#03103a);box-shadow:0 18px 40px -14px rgba(0,119,182,.7),0 0 0 7px rgba(0,188,225,.08),0 0 46px rgba(0,188,225,.4)}
+.orb b{font-size:16px;font-weight:900;letter-spacing:.5px;line-height:1}
+.orb i{font-style:normal;font-size:7.5px;font-weight:800;letter-spacing:.18em;opacity:.8;text-transform:uppercase;margin-top:2px}
+.gp{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 11px;box-shadow:0 12px 24px -18px rgba(5,26,46,.55)}
+.gp svg{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.gp span{font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--ink-soft);text-transform:uppercase}
+/* LEARN */
+.ph.learn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+.ph.learn .orb{width:82px;height:82px}
+.ph.learn .srcg{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.ph.learn .rise{position:absolute;bottom:118px;width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber);opacity:0;animation:flowup 2.4s ease-in infinite}
+.ph.learn .rise.r1{left:30%}.ph.learn .rise.r2{left:46%;animation-delay:.6s}.ph.learn .rise.r3{left:62%;animation-delay:1.2s}.ph.learn .rise.r4{left:54%;animation-delay:1.8s}
+@keyframes flowup{0%{transform:translateY(0);opacity:0}18%{opacity:1}100%{transform:translateY(-116px) scale(.4);opacity:0}}
+/* ADAPT */
+.ph.adapt{display:flex;flex-direction:column;justify-content:center}
+.ph.adapt .aiflag{align-self:flex-end;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);background:var(--warm);border:1px solid rgba(251,170,15,.34);border-radius:20px;padding:4px 9px;margin-bottom:10px}
+.ph.adapt .stk{display:flex;flex-direction:column;gap:9px}
+.ph.adapt .lyr{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;box-shadow:0 12px 24px -18px rgba(5,26,46,.5);opacity:0;transform:translateY(10px);animation:lyrin 4.2s var(--e) infinite}
+.ph.adapt .lyr:nth-child(2){animation-delay:.18s}.ph.adapt .lyr:nth-child(3){animation-delay:.36s}.ph.adapt .lyr:nth-child(4){animation-delay:.54s}
+@keyframes lyrin{0%{opacity:0;transform:translateY(10px)}14%,86%{opacity:1;transform:none}100%{opacity:1}}
+.ph.adapt .lm{font-size:12px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.ph.adapt .lt{font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--amber-deep)}
+.ph.adapt .lyr::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(0,188,225,.16) 50%,transparent 70%);transform:translateX(-110%);animation:shim 4.2s var(--e) infinite}
+.ph.adapt .lyr:nth-child(2)::after{animation-delay:.18s}.ph.adapt .lyr:nth-child(3)::after{animation-delay:.36s}.ph.adapt .lyr:nth-child(4)::after{animation-delay:.54s}
+@keyframes shim{0%,40%{transform:translateX(-110%)}70%,100%{transform:translateX(110%)}}
+/* ACT */
+.ph.act{display:flex;flex-direction:column;justify-content:center;gap:13px}
+.ph.act .top{display:flex;align-items:center;gap:12px}
+.ph.act .orb{width:50px;height:50px;position:relative;flex:none}
+.ph.act .orb b{font-size:12px}
+.ph.act .orb .ping{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(0,188,225,.5);animation:pingo 2.4s var(--e) infinite}
+@keyframes pingo{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.ph.act .top .tx{font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.ph.act .acts{display:flex;flex-direction:column;gap:8px}
+.ph.act .arow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:10px 12px;font-size:11px;font-weight:700;color:var(--ink);box-shadow:0 12px 24px -18px rgba(5,26,46,.5);opacity:0;animation:arin 4.2s var(--e) infinite}
+.ph.act .arow:nth-child(2){animation-delay:.3s}.ph.act .arow:nth-child(3){animation-delay:.6s}.ph.act .arow:nth-child(4){animation-delay:.9s}
+@keyframes arin{0%{opacity:0;transform:translateX(-9px)}12%{opacity:1;transform:none}90%{opacity:1}100%{opacity:1}}
+.ph.act .arow .k{width:18px;height:18px;border-radius:50%;background:rgba(21,160,90,.16);color:#15a05a;display:grid;place-items:center;font-size:11px;font-weight:900;flex:none}
+.ph.act .arow .as{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
+
+/* hero bento — matches the AI page tile system; mapped to ADAM · PES · Cloud · Cybersecurity, AI woven through every tile */
+.bento{display:grid;grid-template-columns:1.25fr 1fr;grid-auto-rows:1fr;gap:13px;aspect-ratio:1/.92;max-width:478px;margin-left:auto}
+.tile{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:0 18px 48px -22px rgba(5,26,46,.2),0 6px 14px -8px rgba(5,26,46,.1);padding:15px 15px 14px;display:flex;flex-direction:column;transition:transform .3s var(--e),box-shadow .3s var(--e)}
+.tile:hover{transform:translateY(-3px);box-shadow:0 32px 80px -32px rgba(5,26,46,.34),0 10px 24px -12px rgba(5,26,46,.14)}
+.tile.t1{background:linear-gradient(135deg,#fff,#f2faff)}
+.tile.t2{background:linear-gradient(135deg,#0a86c4,var(--navy) 72%,#02132f);color:#fff;border:none}
+.tile.t3{background:linear-gradient(135deg,#fff,#fff6e3)}
+.tile.t4{background:#0b1f33;color:#fff;border:none}
+.tlab{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:9px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:9px}
+.tile.t2 .tlab,.tile.t4 .tlab{color:rgba(255,255,255,.66)}
+.tlab .ai{display:inline-flex;align-items:center;gap:5px;color:var(--amber-deep);letter-spacing:.1em}
+.tile.t2 .tlab .ai,.tile.t4 .tlab .ai{color:var(--amber)}
+.tlab .ai::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;animation:bpulse 1.6s ease-in-out infinite}
+@keyframes bpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.8)}}
+.ttl{font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.16;color:var(--ink)}
+.tile.t2 .ttl,.tile.t4 .ttl{color:#fff}
+.vrows{display:flex;flex-direction:column;gap:7px;margin-top:auto}
+.vrow{display:flex;align-items:center;gap:8px;font-size:10.5px;font-weight:600;color:var(--ink-soft);opacity:0;animation:vin .55s var(--e) forwards}
+.vrow:nth-child(1){animation-delay:.25s}.vrow:nth-child(2){animation-delay:.55s}.vrow:nth-child(3){animation-delay:.85s}
+@keyframes vin{from{opacity:0;transform:translateX(-7px)}to{opacity:1;transform:none}}
+.vrow .ck{width:15px;height:15px;border-radius:5px;background:rgba(0,188,225,.16);color:var(--blue);display:grid;place-items:center;font-size:9px;font-weight:900;flex:none}
+.tile.t3 .vrow .ck{background:rgba(251,170,15,.2);color:var(--amber-deep)}
+.vrow .vs{margin-left:auto;font-size:9px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+.chart{display:flex;align-items:flex-end;gap:5px;height:58px;margin-top:auto}
+.chart b{flex:1;height:100%;border-radius:3px 3px 0 0;background:rgba(255,255,255,.4);transform-origin:bottom;transform:scaleY(.5);animation:bar 2.2s ease-in-out infinite}
+.chart b.hi{background:rgba(255,255,255,.78)}.chart b.am{background:var(--amber)}
+.chart b:nth-child(2){animation-delay:.2s}.chart b:nth-child(3){animation-delay:.4s}.chart b:nth-child(4){animation-delay:.6s}.chart b:nth-child(5){animation-delay:.3s}.chart b:nth-child(6){animation-delay:.5s}
+@keyframes bar{0%,100%{transform:scaleY(.42)}50%{transform:scaleY(1)}}
+.pipe{position:relative;margin-top:auto;height:56px;display:flex;align-items:center;padding:0 4px}
+.pipe .ln{position:absolute;left:16px;right:16px;top:18px;height:2px;background:rgba(255,255,255,.16)}
+.pipe .nd{position:relative;z-index:1;flex:1;display:flex;flex-direction:column;align-items:center;gap:8px}
+.pipe .nd i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.45)}
+.pipe .nd span{font-size:8px;font-weight:800;letter-spacing:.05em;color:rgba(255,255,255,.5);text-transform:uppercase}
+.pipe .spark{position:absolute;top:13px;left:0;width:10px;height:10px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber),0 0 4px #fff;animation:run 3.4s var(--e) infinite}
+@keyframes run{0%{left:5%}50%{left:91%}100%{left:5%}}
+
+/* "Built to run" — alternating zig-zag with a connecting line */
+.run{position:relative;margin-top:14px}
+.conn{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none}
+.conn .cbase{fill:none;stroke:var(--line2);stroke-width:2;stroke-dasharray:1 9;stroke-linecap:round}
+.conn .cglow{fill:none;stroke:url(#runwire);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1 9}
+.flowdot{position:absolute;top:0;left:0;width:13px;height:13px;border-radius:50%;background:var(--amber);box-shadow:0 0 16px 3px rgba(251,170,15,.65);z-index:1;offset-rotate:0deg;pointer-events:none;animation:dotflow 6s linear infinite 1.6s}
+@keyframes dotflow{0%{offset-distance:0%}100%{offset-distance:100%}}
+.runrow{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:0 80px;align-items:center;padding:30px 0}
+.runrow.flip .rvis{order:-1}
+.rtext h3{font-size:clamp(21px,2.4vw,28px);font-weight:900;letter-spacing:-.6px;line-height:1.12;margin-bottom:12px}
+.rtext p{font-size:15px;font-weight:300;color:var(--ink-soft);line-height:1.65;max-width:46ch}
+.runrow.flip .rtext{text-align:right;justify-self:end}.runrow.flip .rtext p{margin-left:auto}
+.rvis{display:flex;justify-content:center}
+/* each service = a premium brand-washed render card; the connecting line threads between them */
+.svis{position:relative;margin:0;width:clamp(244px,30vw,344px);aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid rgba(0,75,135,.14);box-shadow:0 34px 70px -36px rgba(5,26,46,.5),0 3px 10px -5px rgba(5,26,46,.16);animation:orbfloat 7s var(--e) infinite;transition:box-shadow .5s var(--e)}
+.runrow:nth-child(3) .svis,.runrow:nth-child(5) .svis{animation-delay:-1.9s}
+.svis img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s var(--e)}
+.svis::after{content:"";position:absolute;inset:0;background:linear-gradient(150deg,rgba(0,188,225,.12),transparent 42%,rgba(0,75,135,.30));pointer-events:none}
+.svchip{position:absolute;left:13px;bottom:13px;z-index:2;display:inline-flex;align-items:center;gap:7px;font-size:10px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#fff;background:rgba(8,30,52,.36);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);border:1px solid rgba(255,255,255,.22);border-radius:30px;padding:6px 12px 6px 10px}
+.svchip .ai{width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 0 rgba(251,170,15,.6);animation:aipulse 2.4s var(--e) infinite}
+@keyframes aipulse{0%,100%{box-shadow:0 0 0 0 rgba(251,170,15,.55)}50%{box-shadow:0 0 0 5px rgba(251,170,15,0)}}
+.rcta{margin-top:18px}
+.runrow:hover .svis{box-shadow:0 44px 92px -32px rgba(5,26,46,.58)}
+.runrow:hover .svis img{transform:scale(1.05)}
+@keyframes orbfloat{0%,100%{transform:translateY(-7px)}50%{transform:translateY(7px)}}
+@keyframes orbring{to{transform:rotate(360deg)}}
+@media(max-width:820px){.conn,.flowdot{display:none}.runrow{grid-template-columns:1fr;gap:18px;padding:22px 0;text-align:center}.runrow.flip .rvis{order:-1}.runrow.flip .rtext{text-align:center;justify-self:auto}.runrow.flip .rtext p{margin:0 auto}.rtext p{margin:0 auto}}
+
+/* generic section + reveal */
+section.band{padding:84px 0;border-top:1px solid var(--line)}
+.intro{max-width:64ch;margin-bottom:40px}.intro h2{margin-bottom:14px}
+.reveal{opacity:0;transform:translateY(26px);transition:.8s var(--e)}.reveal.in{opacity:1;transform:none}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;transition:.4s var(--e)}
+.card:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:var(--cyan)}
+.card .pt{font-size:12.5px;font-weight:700;color:var(--amber-deep);margin-bottom:7px;line-height:1.35}
+.card h3{font-size:18px;font-weight:800;margin-bottom:7px}.card p{font-size:13.5px;font-weight:300;color:var(--ink-soft);line-height:1.5}
+.card .tag{font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px}
+.card .subp{margin-top:12px;font-size:12px;font-weight:500;color:var(--ink-faint);line-height:1.5}
+
+/* intelligence layer */
+.layer{background:linear-gradient(180deg,#fff,var(--warm))}
+.layergrid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.lcard{background:#fff;border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:16px;padding:28px 28px 26px;transition:.4s var(--e)}
+.lcard:nth-child(2),.lcard:nth-child(3){border-left-color:var(--amber)}
+.lcard:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.lcard h3{font-size:20px;font-weight:800;margin-bottom:9px}.lcard h3 .tm{font-size:12px;vertical-align:super;color:var(--ink-faint);font-weight:600}
+.lcard p{font-size:14px;font-weight:300;color:var(--ink-soft);line-height:1.6}
+
+/* extended services strip */
+.more{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.more .lab{font-size:13px;font-weight:700;color:var(--ink-faint);margin-right:4px}
+.more a{font-size:13.5px;font-weight:700;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 14px;transition:.3s var(--e)}
+.more a:hover{border-color:var(--cyan);background:var(--cool);transform:translateY(-2px)}
+
+/* trust */
+.trust{background:var(--cool);border-top:1px solid var(--line);padding:34px 0}
+.trust .row{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:center}
+.trust .m{display:flex;gap:36px 56px;flex-wrap:wrap;justify-content:space-between;flex:1}
+.trust .m div b .n{font-size:34px;font-weight:900;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.trust .m div b{display:flex;align-items:flex-start;font-size:34px;font-weight:900;color:var(--navy);line-height:1}.trust .m div b em{font-style:normal;font-size:.42em;font-weight:800;line-height:1;margin-top:.12em;margin-left:2px;color:var(--amber-deep)}
+.trust .m div span{font-size:12px;font-weight:500;color:var(--ink-soft)}
+.trust .b{display:flex;gap:8px;flex-wrap:wrap}.trust .b span{font-size:12px;font-weight:700;color:var(--ink-soft);background:#fff;border:1px solid var(--line);padding:6px 11px;border-radius:8px}
+
+/* proof / case studies */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;border-top:3px solid var(--amber);display:flex;flex-direction:column;transition:.4s var(--e)}
+.kpi .kthumb{height:146px;overflow:hidden;background:var(--cool)}
+.kpi .kthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--e)}
+.kpi:hover .kthumb img{transform:scale(1.05)}
+.kpi .kbody{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1}
+.kpi:hover{transform:translateY(-5px);box-shadow:var(--sh)}
+.kpi b{display:block;font-size:40px;font-weight:900;color:var(--amber-deep);line-height:1}
+.kpi .sec{font-size:11px;font-weight:700;letter-spacing:.6px;color:var(--blue);margin-bottom:8px}
+.kpi h4{font-size:17px;font-weight:800;margin:2px 0 8px;line-height:1.28}.kpi p{font-size:12.5px;font-weight:300;color:var(--ink-soft);margin-bottom:14px}
+.kpi .rd{margin-top:auto;font-size:12.5px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:6px;align-items:center}.kpi .rd .arr{transition:.3s}.kpi:hover .rd .arr{transform:translateX(4px)}
+
+/* industries */
+.ind{display:flex;flex-wrap:wrap;gap:11px}
+.ind a{font-size:15px;font-weight:800;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px 20px;transition:.3s var(--e)}
+.ind a:hover{background:var(--navy);color:#fff;transform:translateY(-3px)}
+
+/* insights — editorial list */
+.posts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.post{display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:.4s var(--e)}
+.post:hover{transform:translateY(-6px);box-shadow:var(--sh);border-color:var(--cyan)}
+.post .pthumb{height:138px;overflow:hidden;background:var(--cool)}
+.post .pthumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--e)}
+.post:hover .pthumb img{transform:scale(1.05)}
+.post .pbody{padding:15px 16px 17px;display:flex;flex-direction:column;flex:1}
+.post .cat{font-size:10.5px;font-weight:800;letter-spacing:.5px;color:var(--blue);margin-bottom:9px}
+.post h3{font-size:14.5px;font-weight:800;line-height:1.32;margin-bottom:13px}
+.post .meta{margin-top:auto;font-size:12px;font-weight:700}
+.post .meta .go{color:var(--amber-deep);font-weight:800;display:inline-block;transition:.3s}.post:hover .meta .go{transform:translateX(4px)}
+
+/* final cta */
+.final{padding:0;margin:84px 0}
+.cta{background:linear-gradient(135deg,var(--ink),var(--navy) 70%);border-radius:28px;padding:66px 40px;text-align:center;color:#fff;position:relative;overflow:hidden}
+.cta::after{content:"";position:absolute;right:-8%;top:-30%;width:50%;height:160%;background:radial-gradient(circle,rgba(251,170,15,.4),transparent 60%)}
+.cta h2{color:#fff;position:relative}.cta p{position:relative;font-size:17px;font-weight:300;color:rgba(255,255,255,.85);max-width:52ch;margin:14px auto 26px}
+.cta .ctas{position:relative;display:flex;gap:13px;justify-content:center;flex-wrap:wrap}.cta .btn.ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+
+footer{background:var(--ink);color:#9fbdd6;padding:56px 0 28px}
+.fg{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:30px}
+.fg .logo img{height:34px;filter:brightness(0) invert(1);opacity:.92}
+.fg p{font-size:13px;font-weight:300;color:#8fb0ca;margin-top:14px;max-width:34ch}
+footer h5{font-size:12px;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;color:#fff;margin-bottom:14px}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}footer ul a{font-size:13px;font-weight:300;color:#9fbdd6}footer ul a:hover{color:var(--amber)}
+.fb{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);font-size:12px;color:#7fa0bb;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media(max-width:900px){.hero{min-height:0;padding:118px 0 56px}.hero .inner{grid-template-columns:1fr;gap:40px;text-align:center}.heroL .sub{margin-left:auto;margin-right:auto}.heroL .ctas{justify-content:center}.vcard{margin:0 auto}.grid4,.kpis,.posts,.layergrid,.fg{grid-template-columns:repeat(2,1fr)}.trust .row{flex-direction:column;align-items:flex-start}nav{display:none}}
+@media(max-width:900px){.hero{height:auto}}
+@media(max-width:560px){.grid4,.kpis,.posts,.layergrid,.fg{grid-template-columns:1fr}.vcard{height:470px}}
+</style>
+</head>
+<body>
+<header><div class="bar wrap">
+  <a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a>
+  <nav><a href="#services">Services</a><a href="#platforms">Platforms</a><a href="#proof">Work</a><a href="#insights">Insights</a><a href="#">Company</a></nav>
+  <a class="btn amber-btn" href="#cta">Contact <span class="arr">→</span></a>
+</div></header>
+
+<!-- HERO with auto-looping product demo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="ic-app" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M6.5 6.5h.01M9.5 6.5h.01"/></symbol>
+<symbol id="ic-prod" viewBox="0 0 24 24"><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+<symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 18 18z"/></symbol>
+<symbol id="ic-sec" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></symbol>
+</defs></svg>
+<section class="hero"><span class="gridbg"></span><div class="wrap inner">
+  <div class="heroL">
+    <h1>Engineered to run.<br>Built to <span class="word" id="word">think.</span></h1>
+    <p class="sub">We turn your operating goals into intelligent systems that deliver them — lowering risk, taking out cost and compounding advantage across applications, cloud, security and AI.</p>
+    <div class="ctas"><a class="btn amber-btn" href="#cta">Start a conversation <span class="arr">→</span></a><a class="lnk" href="#proof">See the impact <span class="arr">→</span></a></div>
+  </div>
+  <div class="heroR">
+    <div class="demo" data-ph="learn">
+      <span class="fld"></span>
+      <div class="segz"><b class="sz-learn">Learn</b><b class="sz-adapt">Adapt</b><b class="sz-act">Act</b></div>
+
+      <!-- LEARN: the four practices ingest into AI -->
+      <div class="ph learn">
+        <div class="orb"><b>AI</b><i>core</i></div>
+        <div class="srcg">
+          <div class="gp"><svg><use href="#ic-app"/></svg><span>Applications</span></div>
+          <div class="gp"><svg><use href="#ic-prod"/></svg><span>Products</span></div>
+          <div class="gp"><svg><use href="#ic-cloud"/></svg><span>Cloud</span></div>
+          <div class="gp"><svg><use href="#ic-sec"/></svg><span>Security</span></div>
+        </div>
+        <span class="rise r1"></span><span class="rise r2"></span><span class="rise r3"></span><span class="rise r4"></span>
+      </div>
+
+      <!-- ADAPT: the estate is engineered & modernized -->
+      <div class="ph adapt">
+        <span class="aiflag">AI throughout</span>
+        <div class="stk">
+          <div class="lyr"><span class="lm">Applications</span><span class="lt">modernized</span></div>
+          <div class="lyr"><span class="lm">Products</span><span class="lt">engineered</span></div>
+          <div class="lyr"><span class="lm">Cloud</span><span class="lt">scaled</span></div>
+          <div class="lyr"><span class="lm">Security</span><span class="lt">hardened</span></div>
+        </div>
+      </div>
+
+      <!-- ACT: AI orchestrates and executes -->
+      <div class="ph act">
+        <div class="top"><div class="orb"><b>AI</b><span class="ping"></span></div><div class="tx">Operating · responding</div></div>
+        <div class="acts">
+          <div class="arow"><span class="k">✓</span>Workload scaled<span class="as">cloud</span></div>
+          <div class="arow"><span class="k">✓</span>Release shipped<span class="as">apps</span></div>
+          <div class="arow"><span class="k">✓</span>Threat contained<span class="as">security</span></div>
+          <div class="arow"><span class="k">✓</span>Request resolved<span class="as">product</span></div>
+        </div>
+      </div>
+
+      <div class="demcap"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- TRUST -->
+<div class="trust"><div class="wrap row">
+  <div class="m"><div><b><span class="n" data-to="27">27</span><em>+</em></b><span>Years delivering</span></div><div><b><span class="n" data-to="8000">8,000</span><em>+</em></b><span>Projects shipped</span></div><div><b><span class="n" data-to="900">900</span><em>+</em></b><span>Clients worldwide</span></div><div><b><span class="n" data-to="1000">1,000</span><em>+</em></b><span>Engineers</span></div></div>
+</div></div>
+
+<!-- INTELLIGENCE LAYER (backbone) -->
+<section class="band layer"><div class="wrap">
+  <div class="intro reveal"><h2>The intelligence layer behind <span class="amber">everything we build.</span></h2><p class="lead">Methodology, delivery and engineering discipline — the backbone that makes AI dependable in production, not just impressive in a demo.</p></div>
+  <div class="layergrid reveal">
+    <div class="lcard"><h3>Alvarium<span class="tm">™</span></h3><p>Our design-led methodology. We align on the business outcome and the value case before development starts — so investment goes to what moves the needle, not what's easy to build.</p></div>
+    <div class="lcard"><h3>AI-Native Engineering</h3><p>Intelligence built into your systems as core architecture — not a pilot that never scales. AI that earns its place in production, and in the business case.</p></div>
+    <div class="lcard"><h3>Global Delivery Models</h3><p>Onshore, nearshore and offshore teams that flex to your timezone and budget — a thousand engineers giving you scale and cost-efficiency without compromising on quality.</p></div>
+    <div class="lcard"><h3>Engineering DNA</h3><p>Ownership and accountability where it counts — fewer surprises, dependable delivery, and a partner that stays answerable for the outcome.</p></div>
+  </div>
+</div></section>
+
+<!-- SERVICES: built to run -->
+<section class="band" id="services"><div class="wrap">
+  <div class="intro reveal"><h2>Built to <span class="amber">run.</span></h2><p class="lead">Four core practices — each with AI engineered into how systems get built, run and improved.</p></div>
+  <div class="run">
+    <svg class="conn" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="runwire" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#00BCE1"/><stop offset="1" stop-color="#fbaa0f"/></linearGradient></defs><path class="cbase"/><path class="cglow"/></svg>
+    <span class="flowdot"></span>
+    <div class="runrow reveal">
+      <div class="rtext"><h3>Application Development &amp; Maintenance</h3><p>The applications your business runs on — built and maintained with AI in the loop: AI-assisted development and modernization, plus monitoring that flags issues before users feel them.</p><a class="lnk rcta" href="#">Learn more <span class="arr">→</span></a></div>
+      <div class="rvis"><figure class="svis"><img src="_img/svc-adam.jpg" alt="Application development and maintenance" loading="lazy"><figcaption class="svchip"><span class="ai"></span>ADAM · AI in the loop</figcaption></figure></div>
+    </div>
+    <div class="runrow flip reveal">
+      <div class="rtext"><h3>Product Engineering Services</h3><p>Products taken from concept to market and beyond — with AI capabilities designed in from the first release, not bolted on later.</p><a class="lnk rcta" href="#">Learn more <span class="arr">→</span></a></div>
+      <div class="rvis"><figure class="svis"><img src="_img/svc-pes.jpg" alt="Product engineering services" loading="lazy"><figcaption class="svchip"><span class="ai"></span>PES · AI by design</figcaption></figure></div>
+    </div>
+    <div class="runrow reveal">
+      <div class="rtext"><h3>Cloud Transformation</h3><p>Cloud that scales with the business and a bill that doesn't — with AI-driven cost optimization (FinOps) and AIOps keeping it efficient and resilient.</p><a class="lnk rcta" href="#">Learn more <span class="arr">→</span></a></div>
+      <div class="rvis"><figure class="svis"><img src="_img/svc-cloud.jpg" alt="Cloud transformation" loading="lazy"><figcaption class="svchip"><span class="ai"></span>Cloud · FinOps + AIOps</figcaption></figure></div>
+    </div>
+    <div class="runrow flip reveal">
+      <div class="rtext"><h3>Cybersecurity Services</h3><p>Protect revenue, reputation and compliance — with AI-powered detection, triage and response that catches threats faster than humans alone, governed to ISO 27001.</p><a class="lnk rcta" href="#">Learn more <span class="arr">→</span></a></div>
+      <div class="rvis"><figure class="svis"><img src="_img/svc-cyber.jpg" alt="Cybersecurity services" loading="lazy"><figcaption class="svchip"><span class="ai"></span>Cyber · Detect + respond</figcaption></figure></div>
+    </div>
+  </div>
+  <div class="more reveal"><a href="#">Quality Engineering</a><a href="#">AI / ML Engineering</a><a href="#">Digital Experience (DX)</a><a href="#">Consulting &amp; Advisory</a><a href="#">Professional Services</a></div>
+</div></section>
+
+<!-- PLATFORMS -->
+<section class="band" id="platforms"><div class="wrap">
+  <div class="intro reveal"><h2>Gateway <span class="amber">Platforms.</span></h2><p class="lead">Seven AI products we've built and run ourselves — proven intelligence you can deploy instead of build, delivering outcomes from day one.</p></div>
+  <div class="grid4 reveal">
+    <div class="card"><h3>iDashboard</h3><div class="pt">Your AI data analyst that never sleeps</div><p>Ask any question in plain language and get answers, charts and alerts — no SQL, no analyst bottleneck.</p></div>
+    <div class="card"><h3>Vaani</h3><div class="pt">An AI voice agent that never misses a call</div><p>Books, answers and follows up 24/7 — 12 languages, CRM-connected, live in days.</p></div>
+    <div class="card"><h3>CostlyzrEdge</h3><div class="pt">AI-driven FinOps for leaner cloud</div><p>Continuously finds and removes cloud waste across AWS, Azure and Kubernetes — on autopilot.</p></div>
+    <div class="card"><h3>FinFacets</h3><div class="pt">AI intelligence beyond ERP reporting</div><p>Predictive financial modelling and real-time competitor analysis for sharper decisions.</p></div>
+    <div class="card"><h3>AutoDAP</h3><div class="pt">AI-matched vehicle parts, by VIN</div><p>VIN-accurate parts identification and data for the independent automotive aftermarket.</p></div>
+    <div class="card"><h3>LEAP</h3><div class="pt">AI-driven customer connect</div><p>Reaches customers with the right message using location, behaviour, interest and history.</p></div>
+    <div class="card"><h3>Dismanto</h3><div class="pt">AI-assisted ELV processing</div><p>Smarter end-to-end vehicle dismantling and recycling, built for EU ELV compliance.</p></div>
+    <a class="card" href="#" style="background:var(--ink);border:0;text-decoration:none"><h3 style="color:#fff">Explore all platforms</h3><div class="pt" style="color:var(--amber)">The Gateway AI product suite</div><p style="color:rgba(255,255,255,.72)">See every platform we've built and run, end to end.</p></a>
+  </div>
+</div></section>
+
+<!-- PROOF -->
+<section class="band" id="proof"><div class="wrap">
+  <div class="intro reveal"><h2>Proof over <span class="amber">promises.</span></h2><p class="lead">Recent AI engagements across the industries we know best — designed, built and operated end to end.</p></div>
+  <div class="kpis reveal">
+    <div class="kpi"><div class="kthumb"><img src="_img/cs-medical.jpg" alt="" loading="lazy"></div><div class="kbody"><h4>Medical imaging support &amp; diagnostic assistance</h4><p>AI support woven into medical imaging and diagnostic workflows.</p><a class="rd" href="https://www.thegatewaydigital.com/success-stories/" target="_blank" rel="noopener">Read the story <span class="arr">→</span></a></div></div>
+    <div class="kpi"><div class="kthumb"><img src="_img/cs-support.jpg" alt="" loading="lazy"></div><div class="kbody"><h4>Support automation &amp; agent assist</h4><p>AI that clears routine support and assists every agent in real time.</p><a class="rd" href="https://www.thegatewaydigital.com/success-stories/" target="_blank" rel="noopener">Read the story <span class="arr">→</span></a></div></div>
+    <div class="kpi"><div class="kthumb"><img src="_img/cs-aiops.jpg" alt="" loading="lazy"></div><div class="kbody"><h4>Network &amp; platform prediction (AIOps)</h4><p>Predictive AIOps that surfaces issues before they reach production.</p><a class="rd" href="https://www.thegatewaydigital.com/success-stories/" target="_blank" rel="noopener">Read the story <span class="arr">→</span></a></div></div>
+    <div class="kpi"><div class="kthumb"><img src="_img/cs-llmops.jpg" alt="" loading="lazy"></div><div class="kbody"><h4>LLMOps, evaluation &amp; observability</h4><p>The operational layer that keeps production AI measured and trustworthy.</p><a class="rd" href="https://www.thegatewaydigital.com/success-stories/" target="_blank" rel="noopener">Read the story <span class="arr">→</span></a></div></div>
+  </div>
+</div></section>
+
+<!-- INSIGHTS -->
+<section class="band" id="insights"><div class="wrap">
+  <div class="intro reveal"><h2>From the <span class="amber">engine room.</span></h2><p class="lead">Perspectives on putting AI, cloud and engineering to work — and turning the investment into measurable advantage.</p></div>
+  <div class="posts reveal">
+    <a class="post" href="https://www.thegatewaydigital.com/insight/" target="_blank" rel="noopener"><div class="pthumb"><img src="_img/in-cloud.jpg" alt="" loading="lazy"></div><div class="pbody"><h3>Beyond cloud adoption: engineering digital products that scale, perform and adapt</h3><div class="meta"><span class="go">Read the article →</span></div></div></a>
+    <a class="post" href="https://www.thegatewaydigital.com/insight/" target="_blank" rel="noopener"><div class="pthumb"><img src="_img/in-ai.jpg" alt="" loading="lazy"></div><div class="pbody"><h3>Operationalizing AI in the enterprise in Europe — the way ahead</h3><div class="meta"><span class="go">Read the article →</span></div></div></a>
+    <a class="post" href="https://www.thegatewaydigital.com/insight/" target="_blank" rel="noopener"><div class="pthumb"><img src="_img/in-mach.webp" alt="" loading="lazy"></div><div class="pbody"><h3>Microservices, APIs, cloud-native &amp; composable architectures explained</h3><div class="meta"><span class="go">Read the article →</span></div></div></a>
+    <a class="post" href="https://www.thegatewaydigital.com/insight/" target="_blank" rel="noopener"><div class="pthumb"><img src="_img/in-ita.jpg" alt="" loading="lazy"></div><div class="pbody"><h3>Gateway Digital joins the ITA Automotive Service Partner e.V.</h3><div class="meta"><span class="go">Read the article →</span></div></div></a>
+  </div>
+</div></section>
+
+<!-- CTA -->
+<div class="final"><div class="wrap"><div class="cta reveal" id="cta">
+  <h2>Let's turn ambition into intelligent systems that perform.</h2>
+  <p>Tell us the outcome you're aiming for. We'll bring the methodology, the AI platforms and the engineers to deliver it — and keep it running.</p>
+  <div class="ctas"><a class="btn amber-btn" href="#">Book a 30-min call <span class="arr">→</span></a><a class="btn ghost" href="#services">Explore services</a></div>
+</div></div></div>
+
+<!-- FOOTER -->
+<footer><div class="wrap">
+  <div class="fg">
+    <div><a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a><p>AI woven through applications, products, cloud and cybersecurity — intelligent systems designed, built and operated end to end.</p></div>
+    <div><h5>Services</h5><ul><li><a href="#">ADAM</a></li><li><a href="#">Product Engineering</a></li><li><a href="#">Cloud Transformation</a></li><li><a href="#">Cybersecurity</a></li><li><a href="#">Consulting &amp; Advisory</a></li></ul></div>
+    <div><h5>Platforms</h5><ul><li><a href="#">iDashboard</a></li><li><a href="#">Vaani</a></li><li><a href="#">CostlyzrEdge</a></li><li><a href="#">AutoDAP</a></li><li><a href="#">LEAP</a></li><li><a href="#">Dismanto</a></li><li><a href="#">FinFacets</a></li></ul></div>
+    <div><h5>Company</h5><ul><li><a href="#">About</a></li><li><a href="#">Industries</a></li><li><a href="#">Insights</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="fb"><span>© 2026 The Gateway Digital</span><span>Privacy · Terms</span></div>
+</div></footer>
+
+<script>
+/* phased hero demo: cycle Learn → Adapt → Act (each a distinct scene) + sync the headline word */
+const demo=document.querySelector('.demo');
+const PH=['learn','adapt','act'];
+const WORD={learn:'think.',adapt:'adapt.',act:'act.'};
+const CAP={learn:'Understands across applications, products, cloud & security.',adapt:'Engineers & modernises the estate — AI woven through.',act:'Operates & responds — continuously and securely.'};
+const segEls={learn:document.querySelector('.sz-learn'),adapt:document.querySelector('.sz-adapt'),act:document.querySelector('.sz-act')};
+const wordEl=document.getElementById('word'),capEl=document.querySelector('.demcap');
+let i=0,timer=null;
+function show(n){i=((n%3)+3)%3;const s=PH[i];demo.dataset.ph=s;
+  document.querySelectorAll('.demo .ph').forEach(el=>{const on=el.classList.contains(s);el.style.opacity=on?'1':'0';el.style.transform=on?'none':'translateY(16px) scale(.985)';});
+  for(const k in segEls)segEls[k].classList.toggle('on',k===s);capEl.textContent=CAP[s];wordEl.classList.add('out');setTimeout(()=>{wordEl.textContent=WORD[s];wordEl.classList.remove('out');},250);}
+function play(){stop();if(!matchMedia('(prefers-reduced-motion:reduce)').matches)timer=setInterval(()=>show(i+1),3200);}
+function stop(){if(timer){clearInterval(timer);timer=null;}}
+Object.keys(segEls).forEach(k=>segEls[k].addEventListener('click',()=>{show(PH.indexOf(k));play();}));
+demo.addEventListener('mouseenter',stop);demo.addEventListener('mouseleave',play);
+show(0);play();
+
+/* scroll-reveal for lower sections */
+const revs=[...document.querySelectorAll('.reveal')];
+function onReveal(){const t=innerHeight*0.86;revs.forEach(el=>{if(el.getBoundingClientRect().top<t)el.classList.add('in');});}
+addEventListener('scroll',onReveal,{passive:true});onReveal();
+
+/* "Built to run" connector — thread a line through the service orbs and run a pulse along it */
+(function(){
+  const run=document.querySelector('.run');if(!run)return;
+  const conn=run.querySelector('.conn'),cbase=run.querySelector('.cbase'),cglow=run.querySelector('.cglow'),dot=run.querySelector('.flowdot');
+  const orbs=[...run.querySelectorAll('.svis')];
+  function layout(){
+    const rb=run.getBoundingClientRect();if(!rb.width)return;
+    conn.setAttribute('viewBox','0 0 '+rb.width+' '+rb.height);
+    conn.setAttribute('width',rb.width);conn.setAttribute('height',rb.height);
+    const pts=orbs.map(o=>{const b=o.getBoundingClientRect();return [(b.left+b.width/2-rb.left),(b.top+b.height/2-rb.top)];});
+    if(pts.length<2)return;
+    let d='M '+pts[0][0].toFixed(1)+' '+pts[0][1].toFixed(1);
+    for(let i=1;i<pts.length;i++){const x0=pts[i-1][0],y0=pts[i-1][1],x1=pts[i][0],y1=pts[i][1],my=((y0+y1)/2).toFixed(1);d+=' C '+x0.toFixed(1)+' '+my+' '+x1.toFixed(1)+' '+my+' '+x1.toFixed(1)+' '+y1.toFixed(1);}
+    cbase.setAttribute('d',d);cglow.setAttribute('d',d);
+    const len=cglow.getTotalLength();run.style.setProperty('--len',len.toFixed(1));
+    dot.style.offsetPath="path('"+d+"')";dot.style.webkitOffsetPath="path('"+d+"')";
+  }
+  let t;function relayout(){clearTimeout(t);t=setTimeout(layout,120);}
+  layout();addEventListener('resize',relayout);addEventListener('load',layout);
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(layout);
+  setTimeout(layout,400);setTimeout(layout,1200);
+  requestAnimationFrame(layout);
+})();
+
+/* rolling stat numbers — count up on view; fail-safe so real numbers always show even if rAF is throttled */
+(function(){
+  const nums=[...document.querySelectorAll('.trust .n')];if(!nums.length)return;
+  const fmt=n=>n.toLocaleString('en-US');
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches){nums.forEach(n=>n.textContent=fmt(+n.dataset.to));return;}
+  function run(el){const to=+el.dataset.to,dur=1500;let st=null;
+    function step(t){if(st==null)st=t;const p=Math.min((t-st)/dur,1);el.textContent=fmt(Math.round(to*(1-Math.pow(1-p,3))));if(p<1)requestAnimationFrame(step);}
+    el.textContent='0';requestAnimationFrame(step);setTimeout(()=>{el.textContent=fmt(to);},dur+600);}
+  if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){run(en.target);io.unobserve(en.target);}}),{threshold:.4});nums.forEach(n=>io.observe(n));}
+  else nums.forEach(run);
+})();
+</script>
+</body>
+</html>

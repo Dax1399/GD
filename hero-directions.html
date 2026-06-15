@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GD — Hero directions (4 distinct languages)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cyan:#00BCE1;--blue:#0077B6;--navy:#004B87;--amber:#fbaa0f;--amber-deep:#f08c00;--grey:#bbbbbb;--mist:#ebebeb;
+  --ink:#0c2236;--ink-soft:#586a7a;--ink-faint:#8a9aa8;--bg:#fbfcfd;--line:rgba(12,34,54,.12);--line2:rgba(12,34,54,.2);
+  --amber-grad:linear-gradient(115deg,#fbaa0f,#ff7a00);--e:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 40px}
+.panel{min-height:100vh;display:flex;align-items:center;position:relative;border-bottom:1px solid var(--line)}
+.tag{position:absolute;top:84px;left:40px;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--ink-faint);z-index:5}
+.tag b{color:var(--amber-deep)}
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14px;border-radius:10px;padding:13px 24px;cursor:pointer;transition:.3s var(--e);border:0}
+.btn .arr{transition:.3s}.btn:hover .arr{transform:translateX(4px)}
+.amberbtn{background:var(--amber-grad);color:#3a2400}.amberbtn:hover{transform:translateY(-2px)}
+.ghostbtn{background:transparent;color:var(--navy);border:1.5px solid var(--line2)}.ghostbtn:hover{border-color:var(--cyan)}
+
+/* top nav */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;gap:16px;padding:13px 40px;background:rgba(251,252,253,.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.topbar .t{font-weight:900;font-size:13px;letter-spacing:.3px}.topbar .t span{color:var(--amber-deep)}
+.topbar .nav{display:flex;gap:6px;margin-left:6px}
+.topbar a{font-size:12px;font-weight:700;width:26px;height:26px;display:grid;place-items:center;border:1px solid var(--line);border-radius:7px;color:var(--navy)}
+.topbar a:hover{background:#fff;border-color:var(--amber);color:var(--amber-deep)}
+.topbar .note{margin-left:auto;font-size:11.5px;color:var(--ink-faint);font-weight:500}
+
+/* ============ 1 · EDITORIAL / SWISS ============ */
+.d1{background:#fff}
+.d1 .rule{height:1px;background:var(--ink);opacity:.85}
+.d1 .head{display:flex;justify-content:space-between;align-items:baseline;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);padding:14px 0}
+.d1 h1{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:900;line-height:.98;letter-spacing:-2.5px;margin:40px 0 0}
+.d1 h1 em{font-style:normal;position:relative}
+.d1 h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.12em;height:.09em;background:var(--amber-grad)}
+.d1 .low{display:grid;grid-template-columns:1.2fr 1fr;gap:60px;margin-top:56px;align-items:start}
+.d1 .low p{font-size:1.05rem;font-weight:300;color:var(--ink-soft);line-height:1.6;max-width:42ch}
+.d1 .idx{display:flex;flex-direction:column}
+.d1 .idx a{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-top:1px solid var(--line);font-weight:600;font-size:15px;transition:.25s}
+.d1 .idx a:last-child{border-bottom:1px solid var(--line)}
+.d1 .idx a span{color:var(--ink-faint);font-weight:500;font-size:12px}
+.d1 .idx a:hover{padding-left:8px;color:var(--amber-deep)}
+.d1 .cta{margin-top:46px;display:flex;gap:14px}
+
+/* ============ 2 · BOLD EXPRESSIVE ============ */
+.d2{background:#fff;overflow:hidden}
+.d2 .split{display:grid;grid-template-columns:1.35fr .65fr;width:100%;min-height:100vh}
+.d2 .left{display:flex;flex-direction:column;justify-content:center;padding:120px 60px 60px}
+.d2 h1{font-size:clamp(2.8rem,7vw,6rem);font-weight:900;line-height:.95;letter-spacing:-2.5px}
+.d2 .roller{display:inline-block;height:1em;overflow:hidden;vertical-align:bottom}
+.d2 .roller ul{margin:0;padding:0;list-style:none;animation:roll 9s var(--e) infinite}
+.d2 .roller li{height:1em;line-height:1;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes roll{0%,20%{transform:translateY(0)}25%,45%{transform:translateY(-1em)}50%,70%{transform:translateY(-2em)}75%,95%{transform:translateY(-3em)}100%{transform:translateY(-4em)}}
+.d2 .sub{font-size:1.12rem;font-weight:300;color:var(--ink-soft);max-width:44ch;margin:28px 0 36px;line-height:1.55}
+.d2 .cta{display:flex;gap:14px}
+.d2 .right{background:linear-gradient(150deg,var(--navy),var(--blue));color:#fff;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:60px 50px;position:relative}
+.d2 .right::after{content:"";position:absolute;top:-30%;right:-30%;width:80%;height:80%;border-radius:50%;background:radial-gradient(circle,rgba(251,170,15,.45),transparent 60%)}
+.d2 .right .big{font-size:3.4rem;font-weight:900;line-height:1;position:relative}
+.d2 .right p{font-weight:300;font-size:1rem;color:rgba(255,255,255,.85);position:relative;max-width:26ch}
+.d2 .right .circle{width:74px;height:74px;border-radius:50%;border:2px solid rgba(255,255,255,.6);display:grid;place-items:center;font-size:26px;position:relative;transition:.3s}
+.d2 .right .circle:hover{background:var(--amber);border-color:var(--amber);color:#3a2400;transform:scale(1.05)}
+
+/* ============ 3 · PHOTOGRAPHIC ============ */
+.d3{background:#06243d;color:#fff}
+.d3 .photo{position:absolute;inset:0;background:url('_img/photo_team.jpg') center/cover no-repeat}
+.d3 .scrim{position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,18,30,.94) 30%,rgba(6,18,30,.55) 58%,rgba(6,18,30,.15))}
+.d3 .accent{position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--amber-grad)}
+.d3 .inner{position:relative;z-index:2}
+.d3 h1{font-size:clamp(2.6rem,6vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-1.8px}
+.d3 h1 em{font-style:normal;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.d3 .sub{font-size:1.12rem;font-weight:300;color:rgba(255,255,255,.82);max-width:46ch;margin:24px 0 34px;line-height:1.55}
+.d3 .cta{display:flex;gap:14px;align-items:center}
+.d3 .ghostbtn{color:#fff;border-color:rgba(255,255,255,.5)}.d3 .ghostbtn:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.d3 .strip{position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:1px solid rgba(255,255,255,.16);background:rgba(6,18,30,.4)}
+.d3 .strip .wrap{display:flex;gap:34px;padding:18px 40px;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.7)}
+.d3 .strip b{color:#fff}
+
+/* ============ 4 · BENTO / MODULAR ============ */
+.d4{background:var(--bg)}
+.d4 .bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:120px;gap:16px;width:100%}
+.d4 .cell{border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:#fff;transition:.35s var(--e)}
+.d4 .cell:hover{transform:translateY(-5px);box-shadow:0 30px 60px -40px rgba(12,34,54,.45)}
+.d4 .lead{grid-column:span 2;grid-row:span 2;background:#fff}
+.d4 .lead h1{font-size:clamp(1.9rem,3.2vw,2.9rem);font-weight:900;line-height:1.02;letter-spacing:-1.3px}
+.d4 .lead h1 em{font-style:normal;background:var(--amber-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.d4 .lead .cta{display:flex;gap:12px;margin-top:8px}
+.d4 .amber{grid-column:span 2;background:var(--amber-grad);color:#3a2400;border:0}
+.d4 .amber .k{font-size:1.5rem;font-weight:900;line-height:1.05}
+.d4 .navyc{grid-row:span 2;background:linear-gradient(160deg,var(--navy),var(--blue));color:#fff;border:0}
+.d4 .navyc .k{font-size:1.4rem;font-weight:900}
+.d4 .cell .lbl{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--ink-faint)}
+.d4 .amber .lbl{color:#7a4d00}.d4 .navyc .lbl{color:rgba(255,255,255,.7)}
+.d4 .cell .k{font-size:1.15rem;font-weight:800;color:var(--ink)}
+.d4 .cell.cyan .k{color:var(--blue)}
+
+@media(max-width:880px){
+  .d1 .low{grid-template-columns:1fr;gap:30px}
+  .d2 .split{grid-template-columns:1fr}.d2 .right{display:none}
+  .d4 .bento{grid-template-columns:repeat(2,1fr)}.d4 .lead,.d4 .amber,.d4 .navyc{grid-column:span 2}
+  .topbar .note{display:none}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="t">THE GATEWAY <span>DIGITAL</span> — hero directions</div>
+  <div class="nav"><a href="#d1">1</a><a href="#d2">2</a><a href="#d3">3</a><a href="#d4">4</a></div>
+  <div class="note">4 distinct design languages · no orbits, no dashboards · pick one</div>
+</div>
+
+<!-- 1 · EDITORIAL / SWISS -->
+<section class="panel d1" id="d1">
+  <span class="tag"><b>01</b> · Editorial / Swiss</span>
+  <div class="wrap">
+    <div class="rule"></div>
+    <div class="head"><span>The Gateway Digital</span><span>Intelligent systems · since 1998</span></div>
+    <div class="rule"></div>
+    <h1>Engineered to run.<br>Built to <em>think.</em></h1>
+    <div class="low">
+      <p>We design, build, and operate intelligent systems that learn, adapt, and act — across applications, cloud, cybersecurity, and enterprise ecosystems.</p>
+      <div class="idx">
+        <a href="#">Application Dev &amp; Maintenance <span>ADAM</span></a>
+        <a href="#">Product Engineering <span>PES</span></a>
+        <a href="#">Cloud Transformation <span>Cloud</span></a>
+        <a href="#">Cybersecurity Services <span>Secure</span></a>
+      </div>
+    </div>
+    <div class="cta">
+      <a class="btn amberbtn" href="#">Start a conversation <span class="arr">→</span></a>
+      <a class="btn ghostbtn" href="#">See what we build</a>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · BOLD EXPRESSIVE -->
+<section class="panel d2" id="d2">
+  <span class="tag"><b>02</b> · Bold expressive</span>
+  <div class="split">
+    <div class="left">
+      <h1>Engineered<br>to run.<br>Built to <span class="roller"><ul><li>think.</li><li>adapt.</li><li>act.</li><li>scale.</li><li>think.</li></ul></span></h1>
+      <p class="sub">Intelligent systems across applications, cloud, cybersecurity, and enterprise ecosystems — designed, built, and operated end to end.</p>
+      <div class="cta">
+        <a class="btn amberbtn" href="#">Start a conversation <span class="arr">→</span></a>
+        <a class="btn ghostbtn" href="#">See what we build</a>
+      </div>
+    </div>
+    <div class="right">
+      <div class="big">The<br>intelligence<br>layer.</div>
+      <p>Behind everything we design, build, and run.</p>
+      <a class="circle" href="#">→</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3 · PHOTOGRAPHIC -->
+<section class="panel d3" id="d3">
+  <span class="tag" style="color:rgba(255,255,255,.6)"><b style="color:var(--amber)">03</b> · Photographic / human</span>
+  <div class="photo"></div><div class="scrim"></div><div class="accent"></div>
+  <div class="wrap inner">
+    <h1>Engineered to run.<br>Built to <em>think.</em></h1>
+    <p class="sub">We design, build, and operate the intelligent systems your business runs on — then make them smarter over time.</p>
+    <div class="cta">
+      <a class="btn amberbtn" href="#">Start a conversation <span class="arr">→</span></a>
+      <a class="btn ghostbtn" href="#">See what we build</a>
+    </div>
+  </div>
+  <div class="strip"><div class="wrap"><span><b>27 yrs</b> delivering</span><span><b>Applications</b></span><span><b>Cloud</b></span><span><b>Cybersecurity</b></span><span><b>AI / ML</b></span></div></div>
+</section>
+
+<!-- 4 · BENTO / MODULAR -->
+<section class="panel d4" id="d4">
+  <span class="tag"><b>04</b> · Bento / modular</span>
+  <div class="wrap">
+    <div class="bento">
+      <div class="cell lead">
+        <span class="lbl">The Gateway Digital</span>
+        <h1>Engineered to run.<br>Built to <em>think.</em></h1>
+        <div class="cta">
+          <a class="btn amberbtn" href="#">Start a conversation <span class="arr">→</span></a>
+        </div>
+      </div>
+      <div class="cell amber"><span class="lbl">Approach</span><div class="k">AI-native<br>engineering</div></div>
+      <div class="cell navyc"><span class="lbl">Platform</span><div class="k">Vaani<br>voice agents, 24/7</div><span class="lbl" style="font-weight:600">12 languages · &lt;350ms</span></div>
+      <div class="cell cyan"><span class="lbl">Core</span><div class="k">ADAM · PES · Cloud · Cyber</div></div>
+      <div class="cell"><span class="lbl">Operate</span><div class="k">Learn · Adapt · Act</div></div>
+      <div class="cell"><span class="lbl">Insight</span><div class="k">From pilot to production →</div></div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
