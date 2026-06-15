@@ -26,10 +26,30 @@ h2{font-size:clamp(28px,3vw,40px);font-weight:900;line-height:1.08;letter-spacin
 .lnk{font-size:14px;font-weight:700;color:var(--amber-deep);display:inline-flex;gap:7px;align-items:center}.lnk .arr{transition:.3s}.lnk:hover .arr{transform:translateX(5px)}
 
 header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(251,252,253,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:26px;padding:13px 0}.logo img{height:38px}
-nav{display:flex;gap:8px;margin-left:auto}nav a{font-size:14px;font-weight:500;color:var(--ink-soft);padding:8px 6px;position:relative}
-nav a::after{content:"";position:absolute;left:6px;right:6px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
+.bar{display:flex;align-items:center;gap:22px;padding:13px 0;position:relative}.logo img{height:38px}
+nav{display:flex;gap:2px;margin-left:auto;align-items:center}nav a{font-size:13.5px;font-weight:500;color:var(--ink-soft);padding:8px 10px;position:relative;white-space:nowrap}
+nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--amber-grad);transform:scaleX(0);transform-origin:left;transition:.28s var(--e)}
 nav a:hover{color:var(--navy)}nav a:hover::after{transform:scaleX(1)}
+/* services mega menu */
+.navitem{display:flex;align-items:center}
+.navitem>a .caret{width:9px;height:9px;margin-left:5px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s var(--e)}
+.navitem:hover>a .caret,.navitem:focus-within>a .caret{transform:rotate(180deg)}
+.mega{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 18px 18px;box-shadow:0 34px 64px -34px rgba(12,34,54,.42);padding:26px 30px 22px;opacity:0;visibility:hidden;transform:translateY(8px);transition:.26s var(--e);z-index:55}
+.navitem:hover .mega,.navitem:focus-within .mega{opacity:1;visibility:visible;transform:none}
+.mega-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px 30px}
+.mcol .mtitle{display:inline-flex;align-items:baseline;gap:7px;font-size:13.5px;font-weight:800;color:var(--navy);margin-bottom:10px;line-height:1.25;transition:.25s var(--e)}
+.mcol .mtitle:hover{color:var(--amber-deep)}
+.mcol .mtitle .abbr{font-size:9px;font-weight:800;letter-spacing:.08em;color:var(--amber-deep);background:var(--warm);border:1px solid rgba(251,170,15,.34);border-radius:20px;padding:2px 7px;white-space:nowrap}
+.mcol .mtitle .mgo{font-size:13px;color:var(--amber-deep);opacity:0;transform:translateX(-4px);transition:.25s var(--e)}
+.mcol .mtitle:hover .mgo{opacity:1;transform:none}
+.msub{list-style:none;display:flex;flex-direction:column;gap:6px;border-left:2px solid var(--line);padding-left:13px}
+.msub a{font-size:12.5px;font-weight:500;color:var(--ink-soft);padding:1px 0}
+.msub a::after{display:none}
+.msub a:hover{color:var(--amber-deep)}
+.megafoot{margin-top:20px;padding-top:15px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.megafoot span{font-size:12.5px;font-weight:500;color:var(--ink-faint)}
+.megafoot a{font-size:13px;font-weight:800;color:var(--amber-deep)}
+@media(max-width:1080px){nav a{padding:8px 7px;font-size:12.5px}.mega-grid{gap:18px 22px}}
 
 /* hero — split: copy left, auto-looping product demo right */
 .hero{height:100vh;min-height:600px;display:flex;align-items:center;position:relative;overflow:hidden;padding:96px 0 36px}
@@ -437,8 +457,59 @@ footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}footer ul a
 <body>
 <header><div class="bar wrap">
   <a class="logo" href="#"><img src="logo-gateway-digital.svg" alt="The Gateway Digital"/></a>
-  <nav><a href="#services">Services</a><a href="#platforms">Platforms</a><a href="#proof">Work</a><a href="#insights">Insights</a><a href="#">Company</a></nav>
-  <a class="btn amber-btn" href="#cta">Contact <span class="arr">→</span></a>
+  <nav>
+    <div class="navitem">
+      <a href="#services">Services <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+      <div class="mega">
+        <div class="mega-grid">
+          <div class="mcol">
+            <a class="mtitle" href="#services">Application Development &amp; Application Maintenance <span class="abbr">ADAM</span></a>
+            <ul class="msub">
+              <li><a href="#">Software Engineering</a></li>
+              <li><a href="#">Application Modernization</a></li>
+              <li><a href="#">Managed Services</a></li>
+              <li><a href="#">Enterprise Mobility</a></li>
+            </ul>
+          </div>
+          <div class="mcol">
+            <a class="mtitle" href="#services">Product Engineering Services</a>
+            <ul class="msub">
+              <li><a href="#">Product Conceptualization</a></li>
+              <li><a href="#">Product Migration</a></li>
+              <li><a href="#">Product Lifecycle Management</a></li>
+            </ul>
+          </div>
+          <div class="mcol">
+            <a class="mtitle" href="#services">Cloud Transformation</a>
+            <ul class="msub">
+              <li><a href="#">Cloud Migration &amp; Modernization</a></li>
+              <li><a href="#">Cloud Infrastructure &amp; Management</a></li>
+              <li><a href="#">Cloud Managed Services</a></li>
+            </ul>
+          </div>
+          <div class="mcol"><a class="mtitle" href="#services">Quality Engineering <span class="mgo">→</span></a></div>
+          <div class="mcol"><a class="mtitle" href="#services">Cybersecurity Services <span class="mgo">→</span></a></div>
+          <div class="mcol"><a class="mtitle" href="#services">AI / ML Engineering <span class="mgo">→</span></a></div>
+          <div class="mcol"><a class="mtitle" href="#services">Digital Experience (DX) <span class="mgo">→</span></a></div>
+          <div class="mcol"><a class="mtitle" href="#services">Consulting &amp; Advisory <span class="mgo">→</span></a></div>
+          <div class="mcol">
+            <a class="mtitle" href="#services">Professional Services</a>
+            <ul class="msub">
+              <li><a href="#">COE &amp; TecBridge</a></li>
+              <li><a href="#">Staff Augmentation</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="megafoot"><span>Four core practices, plus the specialist teams that support them.</span><a href="#services">Explore all services →</a></div>
+      </div>
+    </div>
+    <a href="#platforms">Platforms</a>
+    <a href="#">Industries</a>
+    <a href="#insights">Insights</a>
+    <a href="#">About Us</a>
+    <a href="#">Global</a>
+  </nav>
+  <a class="btn amber-btn" href="#cta">Contact Us <span class="arr">→</span></a>
 </div></header>
 
 <!-- HERO with auto-looping product demo -->
